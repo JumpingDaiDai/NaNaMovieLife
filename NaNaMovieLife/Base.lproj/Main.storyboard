@@ -26,7 +26,7 @@
         <!--Movie Lists Table View Controller-->
         <scene sceneID="UEg-49-rVp">
             <objects>
-                <tableViewController id="kuO-6C-bCM" customClass="MovieListsTableViewController" customModule="NaNaMovie" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="kuO-6C-bCM" customClass="MovieListsTableViewController" customModule="NaNaMovieLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qDI-Ve-77R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,16 +78,7 @@
                                 </constraints>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="kuO-6C-bCM" id="en0-q1-xUx"/>
-                            <outlet property="delegate" destination="kuO-6C-bCM" id="ZQb-fw-RBj"/>
-                        </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="introductionLabel" destination="Jb0-GL-dCO" id="nXG-iJ-J5S"/>
-                        <outlet property="movieImageView" destination="0Bc-d8-qfz" id="Fhz-WH-vZ0"/>
-                        <outlet property="titleLabel" destination="81i-Tk-U9Y" id="jzl-WR-XX0"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ci-2E-ENR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

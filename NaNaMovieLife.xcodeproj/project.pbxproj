@@ -16,6 +16,7 @@
 		B21DD6CA264D571000FC81E1 /* NaNaMovieLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6C9264D571000FC81E1 /* NaNaMovieLifeTests.swift */; };
 		B21DD6D5264D571000FC81E1 /* NaNaMovieLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6D4264D571000FC81E1 /* NaNaMovieLifeUITests.swift */; };
 		B21DD6E3264D583D00FC81E1 /* MovieListsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6E2264D583D00FC81E1 /* MovieListsTableViewController.swift */; };
+		B21DD6E5264D5A9100FC81E1 /* TestDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6E4264D5A9100FC81E1 /* TestDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B21DD6D4264D571000FC81E1 /* NaNaMovieLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaMovieLifeUITests.swift; sourceTree = "<group>"; };
 		B21DD6D6264D571000FC81E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B21DD6E2264D583D00FC81E1 /* MovieListsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListsTableViewController.swift; sourceTree = "<group>"; };
+		B21DD6E4264D5A9100FC81E1 /* TestDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				B21DD6B4264D570D00FC81E1 /* SceneDelegate.swift */,
 				B21DD6B6264D570D00FC81E1 /* ViewController.swift */,
 				B21DD6E2264D583D00FC81E1 /* MovieListsTableViewController.swift */,
+				B21DD6E4264D5A9100FC81E1 /* TestDataManager.swift */,
 				B21DD6B8264D570D00FC81E1 /* Main.storyboard */,
 				B21DD6BB264D570F00FC81E1 /* Assets.xcassets */,
 				B21DD6BD264D570F00FC81E1 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21DD6E5264D5A9100FC81E1 /* TestDataManager.swift in Sources */,
 				B21DD6E3264D583D00FC81E1 /* MovieListsTableViewController.swift in Sources */,
 				B21DD6B7264D570D00FC81E1 /* ViewController.swift in Sources */,
 				B21DD6B3264D570D00FC81E1 /* AppDelegate.swift in Sources */,

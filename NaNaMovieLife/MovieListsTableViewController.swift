@@ -13,11 +13,15 @@ struct PopularList: Codable {
     var overview: String
 }
 
-class MovieListsTableViewController: UITableViewController {
+class Cell: UITableViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var introductionLabel: UILabel!
+}
+
+class MovieListsTableViewController: UITableViewController {
+    
     
     func getMoviePopularList() {
         
