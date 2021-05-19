@@ -1,0 +1,6 @@
+framework module Pods_NaNaMovieLife_NaNaMovieLifeUITests {
+  umbrella header "Pods-NaNaMovieLife-NaNaMovieLifeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
