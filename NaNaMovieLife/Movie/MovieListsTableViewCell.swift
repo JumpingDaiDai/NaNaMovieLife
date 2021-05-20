@@ -28,8 +28,14 @@ class MovieListsTableViewCell: UITableViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieIntroductionLabel: UILabel!
+    @IBOutlet weak var otherButton: UIButton!
+    
+    // more button 的點擊事件處理
+    var moreAction: (()->Void)?
+    
+    
     @IBAction func moreInfoButtonClick(_ sender: UIButton) {
-        
+        moreAction?()
     }
     
     
@@ -37,6 +43,7 @@ class MovieListsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        self.selectionStyle = .none
     }
     
     // way 2 使用 model 設定 

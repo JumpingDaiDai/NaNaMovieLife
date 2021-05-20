@@ -65,7 +65,14 @@
                                             </state>
                                             <connections>
                                                 <action selector="moreInfoButtonClick:" destination="77V-FJ-WWM" eventType="touchUpInside" id="SVt-MO-HYG"/>
-                                                <segue destination="n5r-08-KCE" kind="push" id="g4c-LO-Wjn"/>
+                                                <segue destination="n5r-08-KCE" kind="push" identifier="getID" id="g4c-LO-Wjn"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CU2-Kj-Ee2">
+                                            <rect key="frame" x="287" y="159" width="37" height="30"/>
+                                            <state key="normal" title="other"/>
+                                            <connections>
+                                                <action selector="otherButtonAction:" destination="kuO-6C-bCM" eventType="touchUpInside" id="ccc-QE-kV9"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -73,6 +80,8 @@
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Jb0-GL-dCO" secondAttribute="bottom" constant="30" id="5fD-cJ-zPI"/>
                                         <constraint firstItem="Jb0-GL-dCO" firstAttribute="leading" secondItem="0Bc-d8-qfz" secondAttribute="trailing" constant="10" id="5lh-jW-qyt"/>
                                         <constraint firstItem="oqe-Wa-16I" firstAttribute="bottom" secondItem="FmS-oJ-4Jc" secondAttribute="bottomMargin" id="Ezv-7I-EpZ"/>
+                                        <constraint firstItem="oqe-Wa-16I" firstAttribute="leading" secondItem="CU2-Kj-Ee2" secondAttribute="trailing" constant="30" id="GPd-qx-kUa"/>
+                                        <constraint firstItem="CU2-Kj-Ee2" firstAttribute="centerY" secondItem="oqe-Wa-16I" secondAttribute="centerY" id="KP5-2O-cqA"/>
                                         <constraint firstItem="81i-Tk-U9Y" firstAttribute="leading" secondItem="0Bc-d8-qfz" secondAttribute="trailing" constant="10" id="UY0-tk-aJD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="81i-Tk-U9Y" secondAttribute="trailing" id="WDd-5P-okF"/>
                                         <constraint firstItem="0Bc-d8-qfz" firstAttribute="leading" secondItem="FmS-oJ-4Jc" secondAttribute="leadingMargin" id="ZBQ-hi-Pae"/>
@@ -91,6 +100,7 @@
                                     <outlet property="movieImageView" destination="0Bc-d8-qfz" id="HqN-nK-ueJ"/>
                                     <outlet property="movieIntroductionLabel" destination="Jb0-GL-dCO" id="odS-ia-hbK"/>
                                     <outlet property="movieTitleLabel" destination="81i-Tk-U9Y" id="Xt2-Bx-8x8"/>
+                                    <outlet property="otherButton" destination="CU2-Kj-Ee2" id="KPr-ZB-6m5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

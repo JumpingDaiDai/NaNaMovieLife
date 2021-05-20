@@ -76,13 +76,23 @@ class MovieListsTableViewController: UITableViewController {
         
     }
     
+    // MARK: Button Action
+    
+    @objc func otherButtonIsClicked(_ sender: UIButton) {
+        print("Other Button: \(sender.tag) Is Clicked")
+    }
+    
+    @IBAction func otherButtonAction(_ sender: UIButton) {
+        print("Other Button: \(sender.tag) Action")
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
         getMoviePopularList()
     }
-    
     
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -107,6 +117,22 @@ class MovieListsTableViewController: UITableViewController {
         if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movie.poster_path) {
             cell.movieImageView.sd_setImage(with: imageurl, completed: nil)
         }
+        cell.moreAction = {
+            
+            print("moreAction: \(indexPath.row)")
+            // 跳電影明細頁面
+//            goDetailVC(id: movie.id)
+            
+        }
+        
+        // 替 other button 加上action
+//        cell.otherButton.addTarget(self, action: #selector(otherButtonIsClicked(_:)), for: .touchUpInside)
+        cell.otherButton.tag = indexPath.row
+        
+        
+        
+        
+        
         
 
 //        // way 2 使用 model 設定 => 有耦合，但程式碼簡短
@@ -121,4 +147,27 @@ class MovieListsTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 可能比較適合命名 List2Detail
+        if segue.identifier == "getID" {
+            
+            if let movieDetalsViewController = segue.destination as? MovieDetalsViewController {
+                
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    print("selected: \(indexPath.row)")
+                }
+                
+                
+                
+                
+//                if let id = popularListArray[indexPath.row].id
+            }
+            
+            
+        
+        }
+    }
 }
+

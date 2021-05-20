@@ -16,4 +16,5 @@ struct PopularListInfo: Codable {
     var title: String
     var overview: String
     var poster_path: String
+    var id: Int
 }
