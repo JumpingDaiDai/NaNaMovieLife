@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieDetalsViewController: UIViewController {
     
@@ -19,36 +20,63 @@ class MovieDetalsViewController: UIViewController {
     @IBOutlet weak var overviewLable: UILabel!
     
     var detalListArray = [DetalsList]()
-    var id = ""
+    
+    // TODO: ID不能設定為0，有可能真的有這個ID
+    var id: Int = 0
     func getDetalInfo() {
         
-        let urlStr = "https://api.themoviedb.org/3/movie/567189?api_key=b3098921d68ce1f6040aec1402793262&language=zh-TW"
-        if let url = URL(string: urlStr) {
+        let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)?api_key=\(ApiWebService.kApiKey)&language=zh-TW"
+        guard let url = URL(string: urlStr) else { return }
         
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
         
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                if let data = data {
+//        if let url = URL(string: urlStr) {
         
-                    do {
-        
-                        let detalData = try decoder.decode(DetalsList.self, from: data)
-                        
-                        print(detalData)
-                    } catch {
-                        print("error")
+        print("\(url)")
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            if let data = data {
+                
+                do {
+                    
+                    let detalData = try decoder.decode(DetalsList.self, from: data)
+                    print(detalData)
+                    DispatchQueue.main.async {
+                        self.detalInfo(detalInfo: detalData)
                     }
+                    
+                    
+                } catch {
+                    print("error")
                 }
-            }.resume()
-        }
+            }
+        }.resume()
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        
+        getDetalInfo()
+        
     }
     
-
+    func detalInfo(detalInfo: DetalsList) {
+        
+        titleLable.text = detalInfo.title
+        originalTitleLable.text = detalInfo.original_title
+        releaseDataLable.text = "上映時間：\(detalInfo.release_date)"
+        if let runtime = detalInfo.runtime {
+            runtimeLable.text = "片長：\(runtime)分"
+        }
+        averageScoreLable.text = "評分：\(detalInfo.vote_average) / 10"
+        commentCountLable.text = "評分數量：\(detalInfo.vote_count)筆"
+        overviewLable.text = detalInfo.overview
+        guard let movieImage = detalInfo.poster_path else { return }
+        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movieImage) {
+            self.movieImage.sd_setImage(with: imageurl, completed: nil)
+        }
+    }
 }

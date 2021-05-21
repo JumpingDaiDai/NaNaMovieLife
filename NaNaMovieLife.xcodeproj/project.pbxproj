@@ -25,6 +25,7 @@
 		B21DD6F02651083300FC81E1 /* ApiWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6EF2651083300FC81E1 /* ApiWebService.swift */; };
 		B21DD6F22653AE8700FC81E1 /* MovieDetalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6F12653AE8700FC81E1 /* MovieDetalsViewController.swift */; };
 		B21DD6F92654BDAE00FC81E1 /* DetalsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6F82654BDAE00FC81E1 /* DetalsList.swift */; };
+		B21DD6FF2656B7E300FC81E1 /* UIImageView+LoadUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6FE2656B7E300FC81E1 /* UIImageView+LoadUrl.swift */; };
 		F84EE0B9FE5941D5FD065340 /* Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF717BCFC26D0A0DBDFBA87D /* Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +52,7 @@
 		2834D7E46AE35A48AEBC42D8 /* Pods-NaNaMovieLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaNaMovieLife.release.xcconfig"; path = "Target Support Files/Pods-NaNaMovieLife/Pods-NaNaMovieLife.release.xcconfig"; sourceTree = "<group>"; };
 		80A08B02BA68AC23E5A2CDD5 /* Pods-NaNaMovieLife-NaNaMovieLifeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaNaMovieLife-NaNaMovieLifeUITests.debug.xcconfig"; path = "Target Support Files/Pods-NaNaMovieLife-NaNaMovieLifeUITests/Pods-NaNaMovieLife-NaNaMovieLifeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F74F821AE4F836809D93B2E /* Pods-NaNaMovieLifeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaNaMovieLifeTests.release.xcconfig"; path = "Target Support Files/Pods-NaNaMovieLifeTests/Pods-NaNaMovieLifeTests.release.xcconfig"; sourceTree = "<group>"; };
-		B21DD6AF264D570D00FC81E1 /* NaNaMovieLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaNaMovieLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21DD6AF264D570D00FC81E1 /* NaNaMovieLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NaNaMovieLife.app; path = "/Users/daidai/NaNaClass/NaNaMovieLife/build/Debug-iphoneos/NaNaMovieLife.app"; sourceTree = "<absolute>"; };
 		B21DD6B2264D570D00FC81E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B21DD6B4264D570D00FC81E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B21DD6B6264D570D00FC81E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,10 +60,10 @@
 		B21DD6BB264D570F00FC81E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B21DD6BE264D570F00FC81E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B21DD6C0264D570F00FC81E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B21DD6C5264D571000FC81E1 /* NaNaMovieLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaNaMovieLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21DD6C5264D571000FC81E1 /* NaNaMovieLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NaNaMovieLifeTests.xctest; path = "/Users/daidai/NaNaClass/NaNaMovieLife/build/Debug-iphoneos/NaNaMovieLifeTests.xctest"; sourceTree = "<absolute>"; };
 		B21DD6C9264D571000FC81E1 /* NaNaMovieLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaMovieLifeTests.swift; sourceTree = "<group>"; };
 		B21DD6CB264D571000FC81E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B21DD6D0264D571000FC81E1 /* NaNaMovieLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaNaMovieLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21DD6D0264D571000FC81E1 /* NaNaMovieLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NaNaMovieLifeUITests.xctest; path = "/Users/daidai/NaNaClass/NaNaMovieLife/build/Debug-iphoneos/NaNaMovieLifeUITests.xctest"; sourceTree = "<absolute>"; };
 		B21DD6D4264D571000FC81E1 /* NaNaMovieLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNaMovieLifeUITests.swift; sourceTree = "<group>"; };
 		B21DD6D6264D571000FC81E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B21DD6E2264D583D00FC81E1 /* MovieListsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListsTableViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		B21DD6EF2651083300FC81E1 /* ApiWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWebService.swift; sourceTree = "<group>"; };
 		B21DD6F12653AE8700FC81E1 /* MovieDetalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetalsViewController.swift; sourceTree = "<group>"; };
 		B21DD6F82654BDAE00FC81E1 /* DetalsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalsList.swift; sourceTree = "<group>"; };
+		B21DD6FE2656B7E300FC81E1 /* UIImageView+LoadUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadUrl.swift"; sourceTree = "<group>"; };
 		BE8A7DDF6D5B43EF1C93ABCD /* Pods_NaNaMovieLifeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaNaMovieLifeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF717BCFC26D0A0DBDFBA87D /* Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC508A38054079F5371EDE1 /* Pods-NaNaMovieLife-NaNaMovieLifeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaNaMovieLife-NaNaMovieLifeUITests.release.xcconfig"; path = "Target Support Files/Pods-NaNaMovieLife-NaNaMovieLifeUITests/Pods-NaNaMovieLife-NaNaMovieLifeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,20 +125,9 @@
 				B21DD6B1264D570D00FC81E1 /* NaNaMovieLife */,
 				B21DD6C8264D571000FC81E1 /* NaNaMovieLifeTests */,
 				B21DD6D3264D571000FC81E1 /* NaNaMovieLifeUITests */,
-				B21DD6B0264D570D00FC81E1 /* Products */,
 				BC75FA36E1D0813786118C21 /* Pods */,
 				9DF0F1CAC4B9F6A872D9C9D4 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		B21DD6B0264D570D00FC81E1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B21DD6AF264D570D00FC81E1 /* NaNaMovieLife.app */,
-				B21DD6C5264D571000FC81E1 /* NaNaMovieLifeTests.xctest */,
-				B21DD6D0264D571000FC81E1 /* NaNaMovieLifeUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		B21DD6B1264D570D00FC81E1 /* NaNaMovieLife */ = {
@@ -146,6 +137,7 @@
 				B21DD6B4264D570D00FC81E1 /* SceneDelegate.swift */,
 				B21DD6B6264D570D00FC81E1 /* ViewController.swift */,
 				B21DD6E4264D5A9100FC81E1 /* TestDataManager.swift */,
+				B21DD6FE2656B7E300FC81E1 /* UIImageView+LoadUrl.swift */,
 				B21DD6E8264E31E200FC81E1 /* Movie */,
 				B21DD6B8264D570D00FC81E1 /* Main.storyboard */,
 				B21DD6BB264D570F00FC81E1 /* Assets.xcassets */,
@@ -308,7 +300,7 @@
 				Base,
 			);
 			mainGroup = B21DD6A6264D570D00FC81E1;
-			productRefGroup = B21DD6B0264D570D00FC81E1 /* Products */;
+			productRefGroup = B21DD6A6264D570D00FC81E1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -456,6 +448,7 @@
 			files = (
 				B21DD6E7264E31DA00FC81E1 /* MovieListsTableViewCell.swift in Sources */,
 				B21DD6E5264D5A9100FC81E1 /* TestDataManager.swift in Sources */,
+				B21DD6FF2656B7E300FC81E1 /* UIImageView+LoadUrl.swift in Sources */,
 				B21DD6F22653AE8700FC81E1 /* MovieDetalsViewController.swift in Sources */,
 				B21DD6F92654BDAE00FC81E1 /* DetalsList.swift in Sources */,
 				B21DD6E3264D583D00FC81E1 /* MovieListsTableViewController.swift in Sources */,

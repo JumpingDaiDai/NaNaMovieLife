@@ -28,7 +28,7 @@ class MovieListsTableViewCell: UITableViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieIntroductionLabel: UILabel!
-    @IBOutlet weak var otherButton: UIButton!
+  
     
     // more button 的點擊事件處理
     var moreAction: (()->Void)?

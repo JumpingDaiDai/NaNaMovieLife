@@ -10,6 +10,7 @@ import SVProgressHUD
 
 extension ApiWebService {
     
+    // 取得熱門電影列表
     func fetchPopularList(page: Int, completionHandler: @escaping ([PopularListInfo]?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kPopularListUrl)?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
@@ -41,4 +42,6 @@ extension ApiWebService {
             }.resume()
         }
     }
+    
+    // 取得電影詳細資訊
 }

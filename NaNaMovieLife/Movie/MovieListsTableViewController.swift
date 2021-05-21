@@ -82,9 +82,9 @@ class MovieListsTableViewController: UITableViewController {
         print("Other Button: \(sender.tag) Is Clicked")
     }
     
-    @IBAction func otherButtonAction(_ sender: UIButton) {
-        print("Other Button: \(sender.tag) Action")
-    }
+//    @IBAction func otherButtonAction(_ sender: UIButton) {
+//        print("Other Button: \(sender.tag) Action")
+//    }
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,17 +117,27 @@ class MovieListsTableViewController: UITableViewController {
         if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movie.poster_path) {
             cell.movieImageView.sd_setImage(with: imageurl, completed: nil)
         }
+        // TODO: 因為 cell 會 reuse，所以圖片url解包失敗也要把 movieImageView 設定成 nil
+        else {
+            cell.movieImageView = nil
+        }
+        
+//        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movie.poster_path) {
+//            cell.movieImageView.load(url: imageurl, completion: nil)
+//        }
+        
+        
         cell.moreAction = {
             
             print("moreAction: \(indexPath.row)")
             // 跳電影明細頁面
-//            goDetailVC(id: movie.id)
+            self.goDetailVC(id: movie.id)
             
         }
         
         // 替 other button 加上action
 //        cell.otherButton.addTarget(self, action: #selector(otherButtonIsClicked(_:)), for: .touchUpInside)
-        cell.otherButton.tag = indexPath.row
+//        cell.otherButton.tag = indexPath.row
         
         
         
@@ -148,26 +158,17 @@ class MovieListsTableViewController: UITableViewController {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    func goDetailVC(id: Int) {
         
-        // 可能比較適合命名 List2Detail
-        if segue.identifier == "getID" {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = sb.instantiateViewController(identifier: "\(MovieDetalsViewController.self)") as? MovieDetalsViewController {
             
-            if let movieDetalsViewController = segue.destination as? MovieDetalsViewController {
-                
-                if let indexPath = tableView.indexPathForSelectedRow {
-                    print("selected: \(indexPath.row)")
-                }
-                
-                
-                
-                
-//                if let id = popularListArray[indexPath.row].id
-            }
+            vc.id = id
             
-            
-        
+            self.navigationController?.pushViewController(vc, animated: true)
         }
+        print("\(id)")
     }
 }
 
