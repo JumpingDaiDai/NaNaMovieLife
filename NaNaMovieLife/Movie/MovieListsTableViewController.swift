@@ -117,7 +117,7 @@ class MovieListsTableViewController: UITableViewController {
         if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movie.poster_path) {
             cell.movieImageView.sd_setImage(with: imageurl, completed: nil)
         }
-        // TODO: 因為 cell 會 reuse，所以圖片url解包失敗也要把 movieImageView 設定成 nil
+        // 因為 cell 會 reuse，所以圖片url解包失敗也要把 movieImageView 設定成 nil
         else {
             cell.movieImageView = nil
         }

@@ -19,47 +19,63 @@ class MovieDetalsViewController: UIViewController {
     @IBOutlet weak var commentCountLable: UILabel!
     @IBOutlet weak var overviewLable: UILabel!
     
-    var detalListArray = [DetalsList]()
     
-    // TODO: ID不能設定為0，有可能真的有這個ID
-    var id: Int = 0
-    func getDetalInfo() {
+    var id: Int?
+    
+    // 將打api以及解析包進去 ApiWebService
+    func getMovieDetailList() {
         
-        let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)?api_key=\(ApiWebService.kApiKey)&language=zh-TW"
-        guard let url = URL(string: urlStr) else { return }
-        
-        
-//        if let url = URL(string: urlStr) {
-        
-        print("\(url)")
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        if let id = id {
             
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            if let data = data {
+            ApiWebService().fetchMovieDetails(id: id) { [weak self] detalList, error in
                 
-                do {
-                    
-                    let detalData = try decoder.decode(DetalsList.self, from: data)
-                    print(detalData)
-                    DispatchQueue.main.async {
-                        self.detalInfo(detalInfo: detalData)
-                    }
+                guard let self = self else { return }
+                
+                if let list = detalList {
+                    self.detalInfo(detalInfo: list)
                     
                     
-                } catch {
-                    print("error")
+                } else {
+                    // show alert
                 }
             }
-        }.resume()
-//        }
+        }
+        
+//        guard let id = id else { return }
+//        let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)?api_key=\(ApiWebService.kApiKey)&language=zh-TW"
+//        guard let url = URL(string: urlStr) else { return }
+//
+//        if let url = URL(string: urlStr) {
+//
+//        print("\(url)")
+//        URLSession.shared.dataTask(with: url) { (data, response, error) in
+//
+//            let decoder = JSONDecoder()
+//            decoder.dateDecodingStrategy = .iso8601
+//            if let data = data {
+//
+//                do {
+//
+//                    let detalData = try decoder.decode(DetalsList.self, from: data)
+//                    print(detalData)
+//                    DispatchQueue.main.async {
+//                        self.detalInfo(detalInfo: detalData)
+//                    }
+//
+//
+//                } catch {
+//                    print("error")
+//                }
+//            }
+//        }.resume()
+////        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        getDetalInfo()
+        getMovieDetailList()
         
     }
     
