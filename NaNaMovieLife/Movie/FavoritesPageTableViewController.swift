@@ -6,25 +6,64 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoritesPageTableViewController: UITableViewController {
 
+//    var dataArray: [FavoritesList] = MovieManager.likeMovies
+    var favoriteList = MovieManager.favoriteMovies
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("[favoriteList] = \(favoriteList)")
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 0
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return favoriteList.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
+        
+        // 建立 cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoritesPageTableViewCell
+        var favoriteList = favoriteList[indexPath.row]
+        // set info for cell
+        cell.movieTitle.text = favoriteList.title
+        cell.movieInduction.text = favoriteList.overview
+        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + favoriteList.posterPath) {
+            cell.movieImage.sd_setImage(with: imageurl, completed: nil)
+        }
+        cell.favoriteButton.isSelected = favoriteList.isFavorite
+        cell.moreAction = {
+            
+            print("moreAction: \(indexPath.row)")
+            // 跳電影明細頁面
+            MovieListsTableViewController().goDetailVC(id: favoriteList.id)
+        }
+        cell.favoritesAction = {
+            
+            if favoriteList.isFavorite { // 是我的最愛
+                // 從我的最愛移除
+                if let index = MovieManager.favoriteMovies.firstIndex(of: favoriteList) {
+                    favoriteList.isFavorite = false
+                    MovieManager.favoriteMovies.remove(at: index)
+                }
+            } else { // 不是我的最愛
+                // 加入我的最愛
+                favoriteList.isFavorite = true
+                MovieManager.favoriteMovies.append(favoriteList)
+            }
+            print("[favorite]\(MovieManager.favoriteMovies)")
+        }
+        
+        return cell
+        
+    }
 
 }

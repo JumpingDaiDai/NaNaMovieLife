@@ -16,4 +16,7 @@ class ApiWebService {
     static var kImageBaseUrl = "https://image.tmdb.org/t/p/w500"
     
     static var kApiKey = "b3098921d68ce1f6040aec1402793262"
+    
+    
+    
 }

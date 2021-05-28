@@ -33,6 +33,11 @@ extension ApiWebService {
                         decoder.dateDecodingStrategy = .iso8601
                         if let data = data {
                             
+                            // 只是為了把 api response 印出來
+                            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                                print("Api url = \(urlStr) \n \(json)")
+                            }
+                            
                             do {
                                 
                                 let movieListData = try decoder.decode(PopularList.self, from: data)
@@ -42,7 +47,8 @@ extension ApiWebService {
                                 completionHandler(popularListArray, nil)
                             }
                             // JSON decode 失敗
-                            catch let error {
+                            catch {
+                                print("JSON decode 失敗: \(error)")
                                 completionHandler(nil, error)
                             }
                         }

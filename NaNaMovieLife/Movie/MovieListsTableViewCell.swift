@@ -9,18 +9,18 @@ import UIKit
 
 // way 3 使用 cell model 設定
 // 給這個Cell用的model
-struct MovieListCellModel {
-    var imageName: String?
-    var title: String
-    var introduction: String
-}
+//struct MovieListCellModel {
+//    var imageName: String?
+//    var title: String
+//    var introduction: String
+//}
 
 // way 4 使用 protocol 設定
-protocol MovieListsTableViewCellDataSource {
-    var imageName: String? { get }
-    var movieTitle: String { get }
-    var introduction: String { get }
-}
+//protocol MovieListsTableViewCellDataSource {
+//    var imageName: String? { get }
+//    var movieTitle: String { get }
+//    var introduction: String { get }
+//}
 
 class MovieListsTableViewCell: UITableViewCell {
     
@@ -28,14 +28,19 @@ class MovieListsTableViewCell: UITableViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieIntroductionLabel: UILabel!
-  
+    @IBOutlet weak var favoriteButton: UIButton!
     
-    // more button 的點擊事件處理
+    
+    // button 的點擊事件處理
     var moreAction: (()->Void)?
-    
+    var favoritesAction: (()->Void)?
     
     @IBAction func moreInfoButtonClick(_ sender: UIButton) {
         moreAction?()
+    }
+    @IBAction func goFaveritesPage(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        favoritesAction?()
     }
     
     
@@ -47,38 +52,38 @@ class MovieListsTableViewCell: UITableViewCell {
     }
     
     // way 2 使用 model 設定 
-    func cellConfiguration(popularListInfo: PopularListInfo) {
-        
-        movieTitleLabel.text = popularListInfo.title
-        movieIntroductionLabel.text = popularListInfo.overview
-    }
+//    func cellConfiguration(popularListInfo: PopularListInfo) {
+//
+//        movieTitleLabel.text = popularListInfo.title
+//        movieIntroductionLabel.text = popularListInfo.overview
+//    }
     
     // way 3 使用 cell model 設定
-    func cellConfiguration(cellModel: MovieListCellModel) {
-
-        movieTitleLabel.text = cellModel.title
-        movieIntroductionLabel.text = cellModel.introduction
-    }
-    
+//    func cellConfiguration(cellModel: MovieListCellModel) {
+//
+//        movieTitleLabel.text = cellModel.title
+//        movieIntroductionLabel.text = cellModel.introduction
+//    }
+//
     // way 4 使用 protocol 設定
-    func cellConfiguration(data: MovieListsTableViewCellDataSource) {
-        
-        movieTitleLabel.text = data.movieTitle
-        movieIntroductionLabel.text = data.introduction
-    }
-}
+//    func cellConfiguration(data: MovieListsTableViewCellDataSource) {
+//
+//        movieTitleLabel.text = data.movieTitle
+//        movieIntroductionLabel.text = data.introduction
+//    }
+//}
 
 // way 4 使用 protocol 設定
-extension PopularListInfo: MovieListsTableViewCellDataSource {
-    var imageName: String? {
-        return nil
-    }
-    
-    var movieTitle: String{
-        return title
-    }
-    
-    var introduction: String {
-        return overview
-    }
+//extension PopularListInfo: MovieListsTableViewCellDataSource {
+//    var imageName: String? {
+//        return nil
+//    }
+//
+//    var movieTitle: String{
+//        return title
+//    }
+//
+//    var introduction: String {
+//        return overview
+//    }
 }

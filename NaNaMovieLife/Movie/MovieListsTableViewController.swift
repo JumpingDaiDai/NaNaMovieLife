@@ -21,12 +21,28 @@ import SVProgressHUD
 //    var overview: String
 //}
 
+
+
+
 class MovieListsTableViewController: UITableViewController {
     
     @IBOutlet var tabelView: UITableView!
     var popularListArray = [PopularListInfo]()
     
-    func getMoviePopularList() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getMoviePopularList()
+    }
+    
+    // MARK: Private methods
+    /// 取得熱門電影列表
+    private func getMoviePopularList() {
        
         SVProgressHUD.show(withStatus: "載入中")
         // 將打api以及解析包進去 ApiWebService
@@ -37,6 +53,9 @@ class MovieListsTableViewController: UITableViewController {
             
             if let list = popularList {
                 self.popularListArray = list
+                // 更新isFavorite
+                self.updateIsFavorite()
+                
                 self.tableView.reloadData()
             } else {
                 // show alert
@@ -69,11 +88,14 @@ class MovieListsTableViewController: UITableViewController {
 //        }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    /// 更新我的最愛狀態
+    private func updateIsFavorite() {
         
-        
-        
+        for (index, popularMovie) in popularListArray.enumerated() {
+            if MovieManager.favoriteMovies.contains(popularMovie) {
+                popularListArray[index].isFavorite = true
+            }
+        }
     }
     
     // MARK: Button Action
@@ -85,16 +107,32 @@ class MovieListsTableViewController: UITableViewController {
 //    @IBAction func otherButtonAction(_ sender: UIButton) {
 //        print("Other Button: \(sender.tag) Action")
 //    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
+    @IBAction func goFavoritePage(_ sender: UIBarButtonItem) {
         
-        super.viewDidAppear(animated)
-        
-        getMoviePopularList()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "\(FavoritesPageTableViewController.self)")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 
+    
+    
+    // MARK: GOTO
+    func goDetailVC(id: Int) {
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = sb.instantiateViewController(identifier: "\(MovieDetalsViewController.self)") as? MovieDetalsViewController {
+            
+            vc.id = id
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        print("\(id)")
+    }
+}
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+extension MovieListsTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -110,11 +148,11 @@ class MovieListsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieListsTableViewCell
         
         
-        let movie: PopularListInfo = popularListArray[indexPath.row]
+        var movie: PopularListInfo = popularListArray[indexPath.row]
         // way 1 基本 設定 => 沒有耦合，在controller上的程式碼很長
         cell.movieTitleLabel.text = movie.title
         cell.movieIntroductionLabel.text = movie.overview
-        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movie.poster_path) {
+        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movie.posterPath) {
             cell.movieImageView.sd_setImage(with: imageurl, completed: nil)
         }
         // 因為 cell 會 reuse，所以圖片url解包失敗也要把 movieImageView 設定成 nil
@@ -126,6 +164,7 @@ class MovieListsTableViewController: UITableViewController {
 //            cell.movieImageView.load(url: imageurl, completion: nil)
 //        }
         
+        cell.favoriteButton.isSelected = movie.isFavorite
         
         cell.moreAction = {
             
@@ -134,17 +173,28 @@ class MovieListsTableViewController: UITableViewController {
             self.goDetailVC(id: movie.id)
             
         }
+        cell.favoritesAction = {
+            
+            if movie.isFavorite { // 是我的最愛
+                // 從我的最愛移除
+                if let index = MovieManager.favoriteMovies.firstIndex(of: movie) {
+                    
+                    movie.isFavorite = false
+                    MovieManager.favoriteMovies.remove(at: index)
+                }
+            } else { // 不是我的最愛
+                // 加入我的最愛
+                movie.isFavorite = true
+                MovieManager.favoriteMovies.append(movie)
+            }
+            print("[NaNa]\(MovieManager.favoriteMovies)")
+        }
         
         // 替 other button 加上action
 //        cell.otherButton.addTarget(self, action: #selector(otherButtonIsClicked(_:)), for: .touchUpInside)
 //        cell.otherButton.tag = indexPath.row
         
         
-        
-        
-        
-        
-
 //        // way 2 使用 model 設定 => 有耦合，但程式碼簡短
 //        cell.cellConfiguration(popularListInfo: movie)
 //
@@ -156,19 +206,6 @@ class MovieListsTableViewController: UITableViewController {
 //        cell.cellConfiguration(data: movie)
 
         return cell
-    }
-    
-    
-    func goDetailVC(id: Int) {
-        
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = sb.instantiateViewController(identifier: "\(MovieDetalsViewController.self)") as? MovieDetalsViewController {
-            
-            vc.id = id
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        print("\(id)")
     }
 }
 

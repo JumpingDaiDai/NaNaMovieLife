@@ -28,7 +28,8 @@
 		B21DD6FF2656B7E300FC81E1 /* UIImageView+LoadUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6FE2656B7E300FC81E1 /* UIImageView+LoadUrl.swift */; };
 		B2DF1F75265B99AE001F1B75 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F74265B99AE001F1B75 /* HomePageViewController.swift */; };
 		B2DF1F82265CDC51001F1B75 /* FavoritesPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F81265CDC51001F1B75 /* FavoritesPageTableViewController.swift */; };
-		B2DF1F84265CE1A2001F1B75 /* FaveritesPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F83265CE1A2001F1B75 /* FaveritesPageTableViewCell.swift */; };
+		B2DF1F84265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F83265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift */; };
+		B2DF1F8A265E0756001F1B75 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F89265E0756001F1B75 /* MovieManager.swift */; };
 		F84EE0B9FE5941D5FD065340 /* Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF717BCFC26D0A0DBDFBA87D /* Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +81,8 @@
 		B2DF1F73265B5730001F1B75 /* NaNaMovieLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaNaMovieLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF1F74265B99AE001F1B75 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B2DF1F81265CDC51001F1B75 /* FavoritesPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPageTableViewController.swift; sourceTree = "<group>"; };
-		B2DF1F83265CE1A2001F1B75 /* FaveritesPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaveritesPageTableViewCell.swift; sourceTree = "<group>"; };
+		B2DF1F83265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPageTableViewCell.swift; sourceTree = "<group>"; };
+		B2DF1F89265E0756001F1B75 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		BE8A7DDF6D5B43EF1C93ABCD /* Pods_NaNaMovieLifeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaNaMovieLifeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF717BCFC26D0A0DBDFBA87D /* Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NaNaMovieLife_NaNaMovieLifeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC508A38054079F5371EDE1 /* Pods-NaNaMovieLife-NaNaMovieLifeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaNaMovieLife-NaNaMovieLifeUITests.release.xcconfig"; path = "Target Support Files/Pods-NaNaMovieLife-NaNaMovieLifeUITests/Pods-NaNaMovieLife-NaNaMovieLifeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 				BE8A7DDF6D5B43EF1C93ABCD /* Pods_NaNaMovieLifeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B21A114B265E831A0062A07F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B2DF1F89265E0756001F1B75 /* MovieManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B21DD6A6264D570D00FC81E1 = {
@@ -179,12 +189,13 @@
 			children = (
 				B21DD6EC265107E100FC81E1 /* ApiWebService */,
 				B21DD6E92650FA2900FC81E1 /* Model */,
+				B21A114B265E831A0062A07F /* Manager */,
 				B21DD6E2264D583D00FC81E1 /* MovieListsTableViewController.swift */,
 				B21DD6E6264E31DA00FC81E1 /* MovieListsTableViewCell.swift */,
 				B21DD6F12653AE8700FC81E1 /* MovieDetalsViewController.swift */,
 				B2DF1F74265B99AE001F1B75 /* HomePageViewController.swift */,
 				B2DF1F81265CDC51001F1B75 /* FavoritesPageTableViewController.swift */,
-				B2DF1F83265CE1A2001F1B75 /* FaveritesPageTableViewCell.swift */,
+				B2DF1F83265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -458,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2DF1F8A265E0756001F1B75 /* MovieManager.swift in Sources */,
 				B21DD6E7264E31DA00FC81E1 /* MovieListsTableViewCell.swift in Sources */,
 				B21DD6E5264D5A9100FC81E1 /* TestDataManager.swift in Sources */,
 				B21DD6FF2656B7E300FC81E1 /* UIImageView+LoadUrl.swift in Sources */,
@@ -467,7 +479,7 @@
 				B21DD6E3264D583D00FC81E1 /* MovieListsTableViewController.swift in Sources */,
 				B21DD6B7264D570D00FC81E1 /* ViewController.swift in Sources */,
 				B2DF1F75265B99AE001F1B75 /* HomePageViewController.swift in Sources */,
-				B2DF1F84265CE1A2001F1B75 /* FaveritesPageTableViewCell.swift in Sources */,
+				B2DF1F84265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift in Sources */,
 				B21DD6B3264D570D00FC81E1 /* AppDelegate.swift in Sources */,
 				B21DD6F02651083300FC81E1 /* ApiWebService.swift in Sources */,
 				B21DD6EB2650FA6500FC81E1 /* PopularList.swift in Sources */,
