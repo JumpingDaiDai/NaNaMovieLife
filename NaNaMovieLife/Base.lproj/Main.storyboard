@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="995.65217391304361" y="93.75"/>
         </scene>
-        <!--Popular Movies-->
+        <!--熱門電影-->
         <scene sceneID="UEg-49-rVp">
             <objects>
                 <tableViewController storyboardIdentifier="MovieListsTableViewController" id="kuO-6C-bCM" customClass="MovieListsTableViewController" customModule="NaNaMovieLife" customModuleProvider="target" sceneMemberID="viewController">
@@ -178,7 +178,7 @@
                             <outlet property="delegate" destination="kuO-6C-bCM" id="zpk-Q2-EOc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Popular Movies" id="1FY-Nz-EEF">
+                    <navigationItem key="navigationItem" title="熱門電影" id="1FY-Nz-EEF">
                         <barButtonItem key="rightBarButtonItem" title="收藏" id="KHD-xn-YyM">
                             <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>

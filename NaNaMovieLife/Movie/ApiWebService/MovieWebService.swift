@@ -11,7 +11,7 @@ import SVProgressHUD
 extension ApiWebService {
     
     // 取得熱門電影列表
-    func fetchPopularList(page: Int, completionHandler: @escaping ([PopularListInfo]?, Error?) -> Void) {
+    func fetchPopularList(page: Int, completionHandler: @escaping ([PopularListInfoResponse]?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kPopularListUrl)?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
         if let url = URL(string: urlStr) {
@@ -41,7 +41,7 @@ extension ApiWebService {
                             do {
                                 
                                 let movieListData = try decoder.decode(PopularList.self, from: data)
-                                let popularListArray: [PopularListInfo] = movieListData.results
+                                let popularListArray: [PopularListInfoResponse] = movieListData.results
                                 
                                 // 執行 完成後要處理的closure，並塞入參數
                                 completionHandler(popularListArray, nil)

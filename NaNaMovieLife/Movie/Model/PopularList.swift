@@ -9,18 +9,14 @@ import UIKit
 
 struct PopularList: Codable {
     
-    var results: [PopularListInfo]
+    var results: [PopularListInfoResponse]
 }
-struct PopularListInfo: Codable {
-    
+
+struct PopularListInfoResponse: Codable {
     var title: String
     var overview: String
     var posterPath: String
     var id: Int
-    
-    // custom var
-    var isFavorite: Bool = false
-    
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -29,6 +25,50 @@ struct PopularListInfo: Codable {
         case id
     }
 }
+
+struct PopularListInfo: Codable {
+    
+    var title: String
+    var overview: String
+    var posterPath: String
+    var id: Int
+    var isFavorite: Bool = false
+    
+    init(title: String, overview: String, posterPath: String, id: Int) {
+        self.title = title
+        self.overview = overview
+        self.posterPath = posterPath
+        self.id = id
+    }
+    
+    init(with response: PopularListInfoResponse) {
+        self.title = response.title
+        self.overview = response.overview
+        self.posterPath = response.posterPath
+        self.id = response.id
+    }
+    
+    static func create(with response: PopularListInfoResponse) -> PopularListInfo {
+        
+        let info = PopularListInfo(title: response.title,
+                                   overview: response.overview,
+                                   posterPath: response.posterPath,
+                                   id: response.id)
+        
+        return info
+    }
+    
+//    static func create(with dictionary: [String: AnyObject]) -> PopularListInfo {
+//
+//        let info = PopularListInfo(title: dictionary["title"] as? String ?? "",
+//                                   overview: dictionary["overview"] as? String ?? "",
+//                                   posterPath: dictionary["posterPath"] as? String ?? "",
+//                                   id: dictionary["id"] as? Int ?? -1)
+//
+//        return info
+//    }
+}
+
 
 extension PopularListInfo: Equatable {
     

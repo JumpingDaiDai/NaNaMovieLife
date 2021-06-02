@@ -46,13 +46,18 @@ class MovieListsTableViewController: UITableViewController {
        
         SVProgressHUD.show(withStatus: "載入中")
         // 將打api以及解析包進去 ApiWebService
-        ApiWebService().fetchPopularList(page: 1) { [weak self] popularList, error in
+        ApiWebService().fetchPopularList(page: 1) { [weak self] popularListResponse, error in
             
             SVProgressHUD.dismiss()
             guard let self = self else { return }
             
-            if let list = popularList {
-                self.popularListArray = list
+            if let list = popularListResponse {
+                
+                for popularListInfoResponse in list {
+                    let popularListInfo = PopularListInfo(with: popularListInfoResponse)
+                    self.popularListArray.append(popularListInfo)
+                }
+//                self.popularListArray = list
                 // 更新isFavorite
                 self.updateIsFavorite()
                 
@@ -188,6 +193,7 @@ extension MovieListsTableViewController {
                 MovieManager.favoriteMovies.append(movie)
             }
             print("[NaNa]\(MovieManager.favoriteMovies)")
+            HomePageViewController().saveDataToUserDefault()
         }
         
         // 替 other button 加上action

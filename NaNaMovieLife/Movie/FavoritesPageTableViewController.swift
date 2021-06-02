@@ -15,9 +15,10 @@ class FavoritesPageTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("[favoriteList] = \(favoriteList)")
+        print("[favoriteList] = \(MovieManager.favoriteMovies)")
+        
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -60,6 +61,7 @@ class FavoritesPageTableViewController: UITableViewController {
                 MovieManager.favoriteMovies.append(favoriteList)
             }
             print("[favorite]\(MovieManager.favoriteMovies)")
+            HomePageViewController().saveDataToUserDefault()
         }
         
         return cell
