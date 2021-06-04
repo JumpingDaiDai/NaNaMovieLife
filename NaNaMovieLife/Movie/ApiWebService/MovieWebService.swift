@@ -64,7 +64,7 @@ extension ApiWebService {
     }
     
     // 取得電影詳細資訊
-    func fetchMovieDetails(id: Int, completionHandler: @escaping (DetalsList?, Error?) -> Void) {
+    func fetchMovieDetails(id: Int, completionHandler: @escaping (MovieDetail?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)?api_key=\(ApiWebService.kApiKey)&language=zh-TW"
         guard let url = URL(string: urlStr) else { return }
@@ -79,7 +79,7 @@ extension ApiWebService {
                 if let data = data {
                     
                     do {
-                        let detalData = try decoder.decode(DetalsList.self, from: data)
+                        let detalData = try decoder.decode(MovieDetail.self, from: data)
                         print(detalData)
                         
                         //MovieDetalsViewController().detalInfo(detalInfo: detalData)

@@ -1,5 +1,5 @@
 //
-//  DetalsList.swift
+//  MovieDetail.swift
 //  NaNaMovieLife
 //
 //  Created by DaiDai on 2021/5/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DetalsList: Codable {
+struct MovieDetail: Codable {
     
     var original_title: String
     var overview: String?

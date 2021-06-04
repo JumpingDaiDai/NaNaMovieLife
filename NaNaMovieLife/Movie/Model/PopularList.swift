@@ -26,6 +26,16 @@ struct PopularListInfoResponse: Codable {
     }
 }
 
+extension PopularListInfo {
+    
+    init(with response: PopularListInfoResponse) {
+        self.title = response.title
+        self.overview = response.overview
+        self.posterPath = response.posterPath
+        self.id = response.id
+    }
+}
+
 struct PopularListInfo: Codable {
     
     var title: String
@@ -34,19 +44,15 @@ struct PopularListInfo: Codable {
     var id: Int
     var isFavorite: Bool = false
     
-    init(title: String, overview: String, posterPath: String, id: Int) {
-        self.title = title
-        self.overview = overview
-        self.posterPath = posterPath
-        self.id = id
-    }
+    // memberwise initializer
+//    init(title: String, overview: String, posterPath: String, id: Int) {
+//        self.title = title
+//        self.overview = overview
+//        self.posterPath = posterPath
+//        self.id = id
+//    }
+
     
-    init(with response: PopularListInfoResponse) {
-        self.title = response.title
-        self.overview = response.overview
-        self.posterPath = response.posterPath
-        self.id = response.id
-    }
     
     static func create(with response: PopularListInfoResponse) -> PopularListInfo {
         

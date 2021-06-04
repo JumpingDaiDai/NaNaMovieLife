@@ -79,20 +79,20 @@ class MovieDetalsViewController: UIViewController {
         
     }
     
-    func detalInfo(detalInfo: DetalsList) {
-        
-        titleLable.text = detalInfo.title
-        originalTitleLable.text = detalInfo.original_title
-        releaseDataLable.text = "上映時間：\(detalInfo.release_date)"
-        if let runtime = detalInfo.runtime {
-            runtimeLable.text = "片長：\(runtime)分"
-        }
-        averageScoreLable.text = "評分：\(detalInfo.vote_average) / 10"
-        commentCountLable.text = "評分數量：\(detalInfo.vote_count)筆"
-        overviewLable.text = detalInfo.overview
-        guard let movieImage = detalInfo.poster_path else { return }
-        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movieImage) {
-            self.movieImage.sd_setImage(with: imageurl, completed: nil)
-        }
-    }
-}
+//    func detalInfo(detalInfo: DetalsList) {
+//
+//        titleLable.text = detalInfo.title
+//        originalTitleLable.text = detalInfo.original_title
+//        releaseDataLable.text = "上映時間：\(detalInfo.release_date)"
+//        if let runtime = detalInfo.runtime {
+//            runtimeLable.text = "片長：\(runtime)分"
+//        }
+//        averageScoreLable.text = "評分：\(detalInfo.vote_average) / 10"
+//        commentCountLable.text = "評分數量：\(detalInfo.vote_count)筆"
+//        overviewLable.text = detalInfo.overview
+//        guard let movieImage = detalInfo.poster_path else { return }
+//        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + movieImage) {
+//            self.movieImage.sd_setImage(with: imageurl, completed: nil)
+//        }
+//    }
+//}

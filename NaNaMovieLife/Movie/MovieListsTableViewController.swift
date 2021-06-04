@@ -126,7 +126,7 @@ class MovieListsTableViewController: UITableViewController {
     func goDetailVC(id: Int) {
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = sb.instantiateViewController(identifier: "\(MovieDetalsViewController.self)") as? MovieDetalsViewController {
+        if let vc = sb.instantiateViewController(identifier: "\(MovieDetailTableViewController.self)") as? MovieDetailTableViewController {
             
             vc.id = id
             
