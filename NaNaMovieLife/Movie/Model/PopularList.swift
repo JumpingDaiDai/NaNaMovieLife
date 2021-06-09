@@ -5,7 +5,7 @@
 //  Created by DaiDai on 2021/5/16.
 //
 
-import UIKit
+import Foundation
 
 struct PopularList: Codable {
     

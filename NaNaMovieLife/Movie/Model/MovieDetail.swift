@@ -5,7 +5,7 @@
 //  Created by DaiDai on 2021/5/19.
 //
 
-import UIKit
+import Foundation
 
 struct MovieDetail: Codable {
     

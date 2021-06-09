@@ -24,3 +24,37 @@ class MovieDetailTableViewCell: UITableViewCell {
         
     }
 }
+
+
+class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    
+//    @IBOutlet weak var colletionView: UICollectionView!
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return 1
+    }
+
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! RelatedMovieCollectionCell
+    
+        
+    
+        return cell
+    }
+
+    
+
+}
+
+
+class RelatedMovieCollectionCell: UICollectionViewCell {
+    
+}

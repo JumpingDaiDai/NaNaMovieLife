@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -198,7 +199,7 @@
         <scene sceneID="caD-1o-Uyq">
             <objects>
                 <tableViewController storyboardIdentifier="MovieDetailTableViewController" id="nIz-po-SGw" customClass="MovieDetailTableViewController" customModule="NaNaMovieLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CGQ-RM-I8r">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" id="CGQ-RM-I8r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -410,6 +411,7 @@
                                         <constraint firstItem="iAc-No-F4a" firstAttribute="leading" secondItem="RfD-6i-qtU" secondAttribute="leading" constant="20" id="QBs-UB-9i0"/>
                                         <constraint firstItem="JnQ-U7-lCn" firstAttribute="leading" secondItem="iAc-No-F4a" secondAttribute="trailing" id="X24-Z1-Ezu"/>
                                         <constraint firstItem="W49-NN-2gb" firstAttribute="leading" secondItem="RfD-6i-qtU" secondAttribute="leading" constant="20" id="XTH-nO-hVI"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iAc-No-F4a" secondAttribute="bottom" constant="20" id="XZl-dw-T2o"/>
                                         <constraint firstItem="1oc-PV-TM5" firstAttribute="centerX" secondItem="RfD-6i-qtU" secondAttribute="centerX" id="ZyC-E7-WWs"/>
                                         <constraint firstItem="x2W-Uf-TZK" firstAttribute="top" secondItem="W49-NN-2gb" secondAttribute="bottom" constant="10" id="aag-yA-BuP"/>
                                         <constraint firstItem="1oc-PV-TM5" firstAttribute="width" secondItem="RfD-6i-qtU" secondAttribute="width" multiplier="0.6" id="chz-Dj-ulr"/>
@@ -421,10 +423,9 @@
                                         <constraint firstItem="ltt-ai-sSx" firstAttribute="top" secondItem="tvq-PM-gpR" secondAttribute="bottom" constant="10" id="lIc-V2-bLH"/>
                                         <constraint firstItem="tvq-PM-gpR" firstAttribute="leading" secondItem="RfD-6i-qtU" secondAttribute="leading" constant="20" id="nW0-96-ZB8"/>
                                         <constraint firstItem="6YA-l2-gOU" firstAttribute="top" secondItem="1oc-PV-TM5" secondAttribute="bottom" constant="20" id="nic-5K-cUB"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JnQ-U7-lCn" secondAttribute="bottom" constant="20" id="oDS-cR-ta2"/>
                                         <constraint firstAttribute="trailing" secondItem="JnQ-U7-lCn" secondAttribute="trailing" constant="20" id="sRc-BG-CqE"/>
                                         <constraint firstItem="iAc-No-F4a" firstAttribute="top" secondItem="ltt-ai-sSx" secondAttribute="bottom" constant="10" id="u9I-Bn-n7y"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iAc-No-F4a" secondAttribute="bottom" constant="20" id="zYI-tR-ZBc"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JnQ-U7-lCn" secondAttribute="bottom" constant="20" id="zdB-Kq-beT"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -438,6 +439,74 @@
                                     <outlet property="titleLable" destination="6YA-l2-gOU" id="lTE-xE-ftj"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RelatedCell" id="uCZ-Wf-uR2" customClass="RelatedMovieTableViewCell" customModule="NaNaMovieLife" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="636" width="414" height="250.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uCZ-Wf-uR2" id="voj-Pt-5dp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="38M-tU-u7v">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="250.5"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="uJA-UM-zjp"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="xsx-FH-HH2">
+                                                <size key="itemSize" width="128" height="220"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="fKj-tU-Lp2" customClass="RelatedMovieCollectionCell" customModule="NaNaMovieLife" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="15.5" width="128" height="220"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w6f-lK-OFI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="220"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="海報" translatesAutoresizingMaskIntoConstraints="NO" id="WDO-Uh-cB9">
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="179"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="50" id="CpF-bV-0NT"/>
+                                                                    <constraint firstAttribute="width" secondItem="WDO-Uh-cB9" secondAttribute="height" multiplier="5:7" id="MpB-Yb-ea1"/>
+                                                                    <constraint firstAttribute="height" constant="70" id="NuN-f1-UD4"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="movie title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIU-Cr-hTf">
+                                                                <rect key="frame" x="10" y="184" width="108" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="WDO-Uh-cB9" firstAttribute="leading" secondItem="w6f-lK-OFI" secondAttribute="leading" id="8RT-Hj-sDn"/>
+                                                            <constraint firstAttribute="trailing" secondItem="WDO-Uh-cB9" secondAttribute="trailing" id="9vq-1L-dcD"/>
+                                                            <constraint firstAttribute="trailing" secondItem="yIU-Cr-hTf" secondAttribute="trailing" constant="10" id="ESW-o5-7yM"/>
+                                                            <constraint firstItem="WDO-Uh-cB9" firstAttribute="top" secondItem="w6f-lK-OFI" secondAttribute="top" id="YQ4-5y-Jar"/>
+                                                            <constraint firstItem="yIU-Cr-hTf" firstAttribute="top" secondItem="WDO-Uh-cB9" secondAttribute="bottom" constant="5" id="ZzV-Cy-Ff7"/>
+                                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yIU-Cr-hTf" secondAttribute="bottom" id="fEF-WP-NMH"/>
+                                                            <constraint firstItem="yIU-Cr-hTf" firstAttribute="leading" secondItem="w6f-lK-OFI" secondAttribute="leading" constant="10" id="kpI-Fw-CzW"/>
+                                                        </constraints>
+                                                    </collectionViewCellContentView>
+                                                </collectionViewCell>
+                                            </cells>
+                                            <connections>
+                                                <outlet property="dataSource" destination="uCZ-Wf-uR2" id="1Nq-wo-daw"/>
+                                                <outlet property="delegate" destination="uCZ-Wf-uR2" id="bQe-C3-sIt"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="38M-tU-u7v" secondAttribute="trailing" id="5Yk-aH-F8L"/>
+                                        <constraint firstItem="38M-tU-u7v" firstAttribute="top" secondItem="voj-Pt-5dp" secondAttribute="top" id="E4z-aG-oYD"/>
+                                        <constraint firstAttribute="bottom" secondItem="38M-tU-u7v" secondAttribute="bottom" id="F2g-jN-g7f"/>
+                                        <constraint firstItem="38M-tU-u7v" firstAttribute="leading" secondItem="voj-Pt-5dp" secondAttribute="leading" id="Wep-My-By2"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="nIz-po-SGw" id="sEI-dS-Wbo"/>
@@ -447,7 +516,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w71-P6-590" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3613" y="100"/>
+            <point key="canvasLocation" x="3611.594202898551" y="99.776785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9rD-S4-DdV">
@@ -607,6 +676,7 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="suit.heart.fill" catalog="system" width="128" height="109"/>
+        <image name="海報" width="500" height="704"/>
         <image name="背景圖" width="518" height="921"/>
         <image name="膠卷" width="1383" height="1229"/>
         <image name="電影素材" width="1274" height="1274"/>

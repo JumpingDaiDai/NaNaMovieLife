@@ -47,7 +47,7 @@ class MovieDetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,28 +55,60 @@ class MovieDetailTableViewController: UITableViewController {
         return 1
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        } else {
+            return 40
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if section == 0 {
+            let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: 0))
+            return headerView
+        } else {
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.bounds.size.width, height: 0))
+            let titleLabel = UILabel.init(frame: CGRect.init(x: 10, y: 0, width: tableView.bounds.size.width - 10, height: 40))
+            titleLabel.text = "推薦電影"
+            titleLabel.backgroundColor = .white
+            headerView.addSubview(titleLabel)
+            return headerView
+        }
+    }
+    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieDetailTableViewCell
-        if let data: MovieDetail = movieDetail {
-            if let url = data.poster_path {
-                
-                if let imageurl = URL(string: ApiWebService.kImageBaseUrl + url) {
-                    cell.movieImage.sd_setImage(with: imageurl, completed: nil)
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieDetailTableViewCell
+            if let data: MovieDetail = movieDetail {
+                if let url = data.poster_path {
+                    
+                    if let imageurl = URL(string: ApiWebService.kImageBaseUrl + url) {
+                        cell.movieImage.sd_setImage(with: imageurl, completed: nil)
+                    }
+                }
+                cell.titleLable.text = data.title
+                cell.originalTitleLable.text = data.original_title
+                cell.releaseDataLable.text = data.release_date
+                if let runtimeLable = data.runtime {
+                    cell.runtimeLable.text = "\(runtimeLable)"
+                }
+                cell.averageScoreLable.text = "\(data.vote_average)"
+                cell.commentCountLable.text = "\(data.vote_count)"
+                if let overview = data.overview {
+                    cell.overviewLable.text = "\(overview)"
+                    
                 }
             }
-            cell.titleLable.text = data.title
-            cell.originalTitleLable.text = data.original_title
-            cell.releaseDataLable.text = data.release_date
-            if let runtimeLable = data.runtime {
-                cell.runtimeLable.text = "\(runtimeLable)"
-            }
-            cell.averageScoreLable.text = "\(data.vote_average)"
-            cell.commentCountLable.text = "\(data.vote_count)"
-            if let overview = data.overview {
-                cell.overviewLable.text = "\(overview)"
-            }
+            return cell
+        } else {
+            
+            let relatedCell = tableView.dequeueReusableCell(withIdentifier: "RelatedCell", for: indexPath) as! RelatedMovieTableViewCell
+            return relatedCell
+            
         }
-        return cell
     }
 }
