@@ -21,16 +21,20 @@ class MovieDetailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.selectionStyle = .none
     }
 }
 
 
 class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     
-//    @IBOutlet weak var colletionView: UICollectionView!
-    
+    var favoriteListInfo: [FavoriteListInfo] = [] {
+        didSet{
+            self.collectionView.reloadData()
+        }
+    }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
@@ -39,13 +43,22 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 5
+        return min(favoriteListInfo.count, 5)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // TODO: 這裡不能用 as!，如果不是 RelatedMovieCollectionCell 時會造成閃退 by 6/14
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! RelatedMovieCollectionCell
     
-        
+        let data = favoriteListInfo[indexPath.row]
+        cell.movieTitleLabel.text = data.title
+        if let url = data.poster_path {
+            
+            if let imageurl = URL(string: ApiWebService.kImageBaseUrl + url) {
+                cell.movieImageView.sd_setImage(with: imageurl, completed: nil)
+            }
+        }
     
         return cell
     }
@@ -57,4 +70,7 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 
 class RelatedMovieCollectionCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
 }

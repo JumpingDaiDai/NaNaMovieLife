@@ -46,7 +46,7 @@ extension HomePageViewController {
         
         // 將 favoriteInfo encode
         guard let data = try? JSONEncoder().encode(favoriteInfo) else { return }
-    
+        
         // 將 favoriteInfo serialize
         if let array = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
             print("array = \(array)")

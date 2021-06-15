@@ -32,6 +32,7 @@ class FavoritesPageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
         
         // 建立 cell
+        // TODO: 這裡不能用 as!，如果不是 FavoritesPageTableViewCell 時會造成閃退 by 6/14
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoritesPageTableViewCell
         var favoriteList = favoriteList[indexPath.row]
         // set info for cell
@@ -45,6 +46,7 @@ class FavoritesPageTableViewController: UITableViewController {
             
             print("moreAction: \(indexPath.row)")
             // 跳電影明細頁面
+            // TODO: 要把 goDetailVC 包到另一個 Class(Manager) 中，不能 new MovieListsTableViewController 來呼叫跳轉，程式邏輯不太合理
             MovieListsTableViewController().goDetailVC(id: favoriteList.id)
         }
         cell.favoritesAction = {
@@ -61,6 +63,7 @@ class FavoritesPageTableViewController: UITableViewController {
                 MovieManager.favoriteMovies.append(favoriteList)
             }
             print("[favorite]\(MovieManager.favoriteMovies)")
+            // TODO: 要把 saveDataToUserDefault 包到另一個 Class(Manager) 中，不能 new HomePageViewController 來呼叫儲存，程式邏輯不太合理
             HomePageViewController().saveDataToUserDefault()
         }
         

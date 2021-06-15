@@ -27,6 +27,7 @@
 		B21DD6FF2656B7E300FC81E1 /* UIImageView+LoadUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21DD6FE2656B7E300FC81E1 /* UIImageView+LoadUrl.swift */; };
 		B22D95C726673650007B48C1 /* MovieDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22D95C626673650007B48C1 /* MovieDetailTableViewController.swift */; };
 		B22D95C92667367B007B48C1 /* MovieDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22D95C82667367B007B48C1 /* MovieDetailTableViewCell.swift */; };
+		B2C375A12670B8D2007328D1 /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C375A02670B8D2007328D1 /* FavoriteList.swift */; };
 		B2DF1F75265B99AE001F1B75 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F74265B99AE001F1B75 /* HomePageViewController.swift */; };
 		B2DF1F82265CDC51001F1B75 /* FavoritesPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F81265CDC51001F1B75 /* FavoritesPageTableViewController.swift */; };
 		B2DF1F84265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F83265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift */; };
@@ -78,6 +79,7 @@
 		B21DD6FE2656B7E300FC81E1 /* UIImageView+LoadUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadUrl.swift"; sourceTree = "<group>"; };
 		B22D95C626673650007B48C1 /* MovieDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailTableViewController.swift; sourceTree = "<group>"; };
 		B22D95C82667367B007B48C1 /* MovieDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B2C375A02670B8D2007328D1 /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
 		B2DF1F71265B5730001F1B75 /* NaNaMovieLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaNaMovieLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF1F72265B5730001F1B75 /* NaNaMovieLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaNaMovieLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF1F73265B5730001F1B75 /* NaNaMovieLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaNaMovieLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,7 @@
 			children = (
 				B21DD6EA2650FA6500FC81E1 /* PopularList.swift */,
 				B21DD6F82654BDAE00FC81E1 /* MovieDetail.swift */,
+				B2C375A02670B8D2007328D1 /* FavoriteList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				B21DD6E3264D583D00FC81E1 /* MovieListsTableViewController.swift in Sources */,
 				B22D95C726673650007B48C1 /* MovieDetailTableViewController.swift in Sources */,
 				B22D95C92667367B007B48C1 /* MovieDetailTableViewCell.swift in Sources */,
+				B2C375A12670B8D2007328D1 /* FavoriteList.swift in Sources */,
 				B21DD6B7264D570D00FC81E1 /* ViewController.swift in Sources */,
 				B2DF1F75265B99AE001F1B75 /* HomePageViewController.swift in Sources */,
 				B2DF1F84265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift in Sources */,

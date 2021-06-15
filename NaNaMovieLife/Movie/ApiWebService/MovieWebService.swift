@@ -95,4 +95,54 @@ extension ApiWebService {
         }.resume()
 //        }
     }
+    
+    //取得推薦電影列表
+    func FatchFavoriteList(page: Int, id: Int, completionHandler: @escaping ([FavoriteListInfo]?, Error?) -> Void) {
+        
+        let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)/recommendations?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
+        guard let url = URL(string: urlStr) else { return }
+        print("\(url)")
+        //呼叫api
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            DispatchQueue.main.async {
+                
+                // http error
+                if error != nil {
+                    completionHandler(nil, error)
+                }
+                //有打到server
+                else {
+                    
+                    //解碼
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let data = data {
+                        
+                        //印出api response
+                        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                            print("Api url = \(urlStr) \n \(json)")
+                        }
+                        do {
+                            
+                            let favoriteListData = try decoder.decode(FavoriteList.self, from: data)
+                            let favoriteListArray: [FavoriteListInfo] = favoriteListData.results
+                            
+                            // 執行 完成後要處理的closure，並塞入參數
+                            completionHandler(favoriteListArray, nil)
+                        }
+                        // JSON decode 失敗
+                        catch {
+                            print("JSON decode 失敗: \(error)")
+                            completionHandler(nil, error)
+                        }
+                    }
+                    // api 回傳 data 是空的
+                    else {
+                        completionHandler(nil, error)
+                    }
+                }
+            }
+        }.resume()
+    }
 }

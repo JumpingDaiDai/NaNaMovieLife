@@ -11,9 +11,11 @@ class MovieDetailTableViewController: UITableViewController {
     
     var id: Int?
     var movieDetail: MovieDetail?
-    
+    var favoriteListInfo: [FavoriteListInfo] = []
+    //呼叫電影詳細頁api
     func getMovieDetailList() {
         
+        // TODO: 這裡適合使用 guard let 來解包 by 6/14
         if let id = id {
             
             ApiWebService().fetchMovieDetails(id: id) { [weak self] movieDetail, error in
@@ -22,6 +24,8 @@ class MovieDetailTableViewController: UITableViewController {
                 
                 if let detail = movieDetail {
                     self.movieDetail = detail
+                    
+                    // TODO: reload 可以寫在 movieDetail 的 didSet 中 by 6/14
                     self.tableView.reloadData()
                     
                     
@@ -32,7 +36,30 @@ class MovieDetailTableViewController: UITableViewController {
         }
     }
     
-    
+    //呼叫推薦列表api
+    func getFavoriteListList() {
+       
+        // 將打api以及解析包進去 ApiWebService
+        // TODO: 這裡適合使用guard let 來解包 by 6/14
+        if let id = id {
+            ApiWebService().FatchFavoriteList(page: 1, id: id) { [weak self] FavoriteListInfo, error in
+                
+                guard let self = self else { return }
+                
+                // TODO: 拼錯 lise -> list by 6/14
+                if let lise = FavoriteListInfo {
+                    self.favoriteListInfo = lise
+                    
+                    // TODO: reload 可以寫在 favoriteListInfo 的 didSet 中 by 6/14
+                    self.tableView.reloadData()
+                    print("[推薦api]\(lise)")
+                    
+                } else {
+                    // show alert
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +70,7 @@ class MovieDetailTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         getMovieDetailList()
+        getFavoriteListList()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,6 +110,7 @@ class MovieDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            // TODO: 這裡不能用 as!，如果不是 MovieDetailTableViewCell 時會造成閃退 by 6/14
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieDetailTableViewCell
             if let data: MovieDetail = movieDetail {
                 if let url = data.poster_path {
@@ -105,8 +134,11 @@ class MovieDetailTableViewController: UITableViewController {
             }
             return cell
         } else {
-            
+            // TODO: 這裡不能用 as!，如果不是 RelatedMovieTableViewCell 時會造成閃退 by 6/14
             let relatedCell = tableView.dequeueReusableCell(withIdentifier: "RelatedCell", for: indexPath) as! RelatedMovieTableViewCell
+            
+            relatedCell.favoriteListInfo = favoriteListInfo
+            
             return relatedCell
             
         }
