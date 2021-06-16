@@ -118,22 +118,6 @@ class MovieListsTableViewController: UITableViewController {
         let vc = sb.instantiateViewController(identifier: "\(FavoritesPageTableViewController.self)")
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-
-    
-    
-    // MARK: GOTO
-    func goDetailVC(id: Int) {
-        
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = sb.instantiateViewController(identifier: "\(MovieDetailTableViewController.self)") as? MovieDetailTableViewController {
-            
-            vc.id = id
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        print("\(id)")
-    }
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -175,7 +159,7 @@ extension MovieListsTableViewController {
             
             print("moreAction: \(indexPath.row)")
             // 跳電影明細頁面
-            self.goDetailVC(id: movie.id)
+            NavigationManager.goDetailVC(id: movie.id, nav: self.navigationController)
             
         }
         cell.favoritesAction = {
@@ -193,7 +177,7 @@ extension MovieListsTableViewController {
                 MovieManager.favoriteMovies.append(movie)
             }
             print("[NaNa]\(MovieManager.favoriteMovies)")
-            HomePageViewController().saveDataToUserDefault()
+            MovieManager.saveFavoriteMoviesToUserDefault()
         }
         
         // 替 other button 加上action

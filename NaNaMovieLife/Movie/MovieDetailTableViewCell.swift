@@ -33,6 +33,7 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     var favoriteListInfo: [FavoriteListInfo] = [] {
         didSet{
             self.collectionView.reloadData()
+            
         }
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -47,9 +48,9 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // TODO: 這裡不能用 as!，如果不是 RelatedMovieCollectionCell 時會造成閃退 by 6/14
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! RelatedMovieCollectionCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as? RelatedMovieCollectionCell else {
+            return UICollectionViewCell()
+        }
     
         let data = favoriteListInfo[indexPath.row]
         cell.movieTitleLabel.text = data.title
