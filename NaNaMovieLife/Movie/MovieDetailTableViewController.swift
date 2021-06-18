@@ -57,8 +57,10 @@ class MovieDetailTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "背景圖"))
+        self.tableView.backgroundView?.alpha = 0.5
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +97,7 @@ class MovieDetailTableViewController: UITableViewController {
             let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.bounds.size.width, height: 0))
             let titleLabel = UILabel.init(frame: CGRect.init(x: 10, y: 0, width: tableView.bounds.size.width - 10, height: 40))
             titleLabel.text = "推薦電影"
-            titleLabel.backgroundColor = .white
+            titleLabel.backgroundColor = .clear
             headerView.addSubview(titleLabel)
             return headerView
         }

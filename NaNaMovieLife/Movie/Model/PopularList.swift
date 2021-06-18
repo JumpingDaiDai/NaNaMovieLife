@@ -10,6 +10,7 @@ import Foundation
 struct PopularList: Codable {
     
     var results: [PopularListInfoResponse]
+    var total_pages: Int
 }
 
 struct PopularListInfoResponse: Codable {

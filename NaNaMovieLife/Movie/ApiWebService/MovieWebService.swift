@@ -35,7 +35,7 @@ extension ApiWebService {
                             
                             // 只是為了把 api response 印出來
                             if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                                print("Api url = \(urlStr) \n \(json)")
+                                print("Api url = \(urlStr) \n \(json.json)")
                             }
                             
                             do {

@@ -14,9 +14,11 @@ class FavoritesPageTableViewController: UITableViewController {
     var favoriteList = MovieManager.favoriteMovies
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print("[favoriteList] = \(MovieManager.favoriteMovies)")
-        
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "背景圖"))
+        self.tableView.backgroundView?.alpha = 0.5
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

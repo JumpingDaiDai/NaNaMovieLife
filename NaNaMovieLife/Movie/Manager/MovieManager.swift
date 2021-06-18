@@ -35,7 +35,6 @@ class MovieManager: NSObject {
         
         var objects: [PopularListInfo] = [PopularListInfo]()
         for dict in array {
-            
             // 將dictionary轉成 PopularListInfo
             guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else { return nil }
             guard let popularListInfo = try? JSONDecoder().decode(PopularListInfo.self, from: data) else { return nil }

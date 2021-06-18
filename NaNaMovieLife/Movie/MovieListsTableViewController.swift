@@ -28,25 +28,27 @@ class MovieListsTableViewController: UITableViewController {
     
     @IBOutlet var tabelView: UITableView!
     var popularListArray = [PopularListInfo]()
-    
+    var nowPage = 1
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "背景圖"))
+        self.tableView.backgroundView?.alpha = 0.5
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getMoviePopularList()
+        getMoviePopularList(page: 1)
     }
     
     // MARK: Private methods
     /// 取得熱門電影列表
-    private func getMoviePopularList() {
+    private func getMoviePopularList(page: Int) {
        
         SVProgressHUD.show(withStatus: "載入中")
         // 將打api以及解析包進去 ApiWebService
-        ApiWebService().fetchPopularList(page: 1) { [weak self] popularListResponse, error in
+        ApiWebService().fetchPopularList(page: page) { [weak self] popularListResponse, error in
             
             SVProgressHUD.dismiss()
             guard let self = self else { return }
@@ -130,6 +132,17 @@ extension MovieListsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return popularListArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = popularListArray.count - 1
+        if indexPath.row == lastElement {
+            let nextPage = nowPage + 1
+            guard nextPage <= 500 else { return }
+            print("nextPage = \(nextPage)")
+            getMoviePopularList(page: nextPage)
+            nowPage = nextPage
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
