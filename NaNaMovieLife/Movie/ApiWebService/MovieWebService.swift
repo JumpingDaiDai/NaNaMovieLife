@@ -10,7 +10,7 @@ import SVProgressHUD
 
 extension ApiWebService {
     
-    // 取得熱門電影列表
+    //MARK: 取得熱門電影列表
     func fetchPopularList(page: Int, completionHandler: @escaping ([PopularListInfoResponse]?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kPopularListUrl)?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
@@ -63,7 +63,7 @@ extension ApiWebService {
         }
     }
     
-    // 取得電影詳細資訊
+    //MARK: 取得電影詳細資訊
     func fetchMovieDetails(id: Int, completionHandler: @escaping (MovieDetail?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)?api_key=\(ApiWebService.kApiKey)&language=zh-TW"
@@ -96,8 +96,8 @@ extension ApiWebService {
 //        }
     }
     
-    //取得推薦電影列表
-    func FatchFavoriteList(page: Int, id: Int, completionHandler: @escaping ([FavoriteListInfo]?, Error?) -> Void) {
+    //MARK: 取得推薦電影列表
+    func FatchRecommendList(page: Int, id: Int, completionHandler: @escaping ([RecommendListInfo]?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)/recommendations?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
         guard let url = URL(string: urlStr) else { return }
@@ -125,11 +125,11 @@ extension ApiWebService {
                         }
                         do {
                             
-                            let favoriteListData = try decoder.decode(FavoriteList.self, from: data)
-                            let favoriteListArray: [FavoriteListInfo] = favoriteListData.results
+                            let recommendListData = try decoder.decode(RecommendList.self, from: data)
+                            let recommendListArray: [RecommendListInfo] = recommendListData.results
                             
                             // 執行 完成後要處理的closure，並塞入參數
-                            completionHandler(favoriteListArray, nil)
+                            completionHandler(recommendListArray, nil)
                         }
                         // JSON decode 失敗
                         catch {
@@ -145,4 +145,7 @@ extension ApiWebService {
             }
         }.resume()
     }
+    
+    //MARK: 取得即將上映電影列表
+    
 }

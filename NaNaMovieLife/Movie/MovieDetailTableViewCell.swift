@@ -30,7 +30,7 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var favoriteListInfo: [FavoriteListInfo] = [] {
+    var recommendListInfo: [RecommendListInfo] = [] {
         didSet{
             self.collectionView.reloadData()
             
@@ -44,7 +44,7 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return min(favoriteListInfo.count, 5)
+        return min(recommendListInfo.count, 5)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,7 +52,7 @@ class RelatedMovieTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
             return UICollectionViewCell()
         }
     
-        let data = favoriteListInfo[indexPath.row]
+        let data = recommendListInfo[indexPath.row]
         cell.movieTitleLabel.text = data.title
         if let url = data.poster_path {
             

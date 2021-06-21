@@ -1,5 +1,5 @@
 //
-//  FavoriteList.swift
+//  RecommendList.swift
 //  NaNaMovieLife
 //
 //  Created by DaiDai on 2021/6/9.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct FavoriteList: Codable {
+struct RecommendList: Codable {
     
-    var results: [FavoriteListInfo]
+    var results: [RecommendListInfo]
 }
 
-struct FavoriteListInfo: Codable {
+struct RecommendListInfo: Codable {
     
     var title: String
     var poster_path: String?

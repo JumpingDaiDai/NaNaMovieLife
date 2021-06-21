@@ -15,7 +15,7 @@ class MovieDetailTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    var favoriteListInfo: [FavoriteListInfo] = [] {
+    var recommendListInfo: [RecommendListInfo] = [] {
         didSet{
             self.tableView.reloadData()
         }
@@ -39,15 +39,15 @@ class MovieDetailTableViewController: UITableViewController {
     }
     
     //呼叫推薦列表api
-    func getFavoriteListList() {
+    func getRecommendList() {
        
         if let id = id {
-            ApiWebService().FatchFavoriteList(page: 1, id: id) { [weak self] FavoriteListInfo, error in
+            ApiWebService().FatchRecommendList(page: 1, id: id) { [weak self] RecommendListInfo, error in
                 
                 guard let self = self else { return }
                 
-                if let list = FavoriteListInfo {
-                    self.favoriteListInfo = list
+                if let list = RecommendListInfo {
+                    self.recommendListInfo = list
                     print("[推薦api]\(list)")
                 } else {
                     // show alert
@@ -67,7 +67,7 @@ class MovieDetailTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         getMovieDetailList()
-        getFavoriteListList()
+        getRecommendList()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -138,7 +138,7 @@ class MovieDetailTableViewController: UITableViewController {
                 return UITableViewCell()
             }
             
-            relatedCell.favoriteListInfo = favoriteListInfo
+            relatedCell.recommendListInfo = recommendListInfo
             
             return relatedCell
             
