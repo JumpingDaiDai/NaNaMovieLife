@@ -42,7 +42,7 @@ class MovieDetailTableViewController: UITableViewController {
     func getRecommendList() {
        
         if let id = id {
-            ApiWebService().FatchRecommendList(page: 1, id: id) { [weak self] RecommendListInfo, error in
+            ApiWebService().fetchRecommendList(page: 1, id: id) { [weak self] RecommendListInfo, error in
                 
                 guard let self = self else { return }
                 

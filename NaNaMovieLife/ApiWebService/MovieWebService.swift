@@ -11,7 +11,7 @@ import SVProgressHUD
 extension ApiWebService {
     
     //MARK: 取得熱門電影列表
-    func fetchPopularList(page: Int, completionHandler: @escaping ([PopularListInfoResponse]?, Error?) -> Void) {
+    func fetchPopularList(page: Int, completionHandler: @escaping ([PopularListInfoResponse]?, _ totalPage: Int?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kPopularListUrl)?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
         if let url = URL(string: urlStr) {
@@ -24,7 +24,7 @@ extension ApiWebService {
                     // http error
                     if error != nil {
                         
-                        completionHandler(nil, error)
+                        completionHandler(nil, nil, error)
                     }
                     // 有打到server
                     else {
@@ -42,19 +42,19 @@ extension ApiWebService {
                                 
                                 let movieListData = try decoder.decode(PopularList.self, from: data)
                                 let popularListArray: [PopularListInfoResponse] = movieListData.results
-                                
+                                let totalPage = movieListData.total_pages
                                 // 執行 完成後要處理的closure，並塞入參數
-                                completionHandler(popularListArray, nil)
+                                completionHandler(popularListArray, totalPage, nil)
                             }
                             // JSON decode 失敗
                             catch {
                                 print("JSON decode 失敗: \(error)")
-                                completionHandler(nil, error)
+                                completionHandler(nil, nil, error)
                             }
                         }
                         // api 回傳 data 是空的
                         else {
-                            completionHandler(nil, error)
+                            completionHandler(nil, nil,error)
                         }
                     }
                     
@@ -97,7 +97,7 @@ extension ApiWebService {
     }
     
     //MARK: 取得推薦電影列表
-    func FatchRecommendList(page: Int, id: Int, completionHandler: @escaping ([RecommendListInfo]?, Error?) -> Void) {
+    func fetchRecommendList(page: Int, id: Int, completionHandler: @escaping ([RecommendListInfo]?, Error?) -> Void) {
         
         let urlStr = "\(ApiWebService.kBaseUrl)/movie/\(id)/recommendations?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)"
         guard let url = URL(string: urlStr) else { return }
@@ -147,5 +147,8 @@ extension ApiWebService {
     }
     
     //MARK: 取得即將上映電影列表
-    
+    func fetchUpcomingMovieList() {
+        
+        
+    }
 }

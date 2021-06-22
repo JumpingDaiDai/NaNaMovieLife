@@ -29,6 +29,7 @@ class MovieListsTableViewController: UITableViewController {
     @IBOutlet var tabelView: UITableView!
     var popularListArray = [PopularListInfo]()
     var nowPage = 1
+    var totalPage: Int?
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -48,11 +49,10 @@ class MovieListsTableViewController: UITableViewController {
        
         SVProgressHUD.show(withStatus: "載入中")
         // 將打api以及解析包進去 ApiWebService
-        ApiWebService().fetchPopularList(page: page) { [weak self] popularListResponse, error in
+        ApiWebService().fetchPopularList(page: page) { [weak self] popularListResponse, totalPageResponse, error in
             
             SVProgressHUD.dismiss()
             guard let self = self else { return }
-            
             if let list = popularListResponse {
                 
                 for popularListInfoResponse in list {
@@ -62,8 +62,8 @@ class MovieListsTableViewController: UITableViewController {
 //                self.popularListArray = list
                 // 更新isFavorite
                 self.updateIsFavorite()
-                
                 self.tableView.reloadData()
+                self.totalPage = totalPageResponse
             } else {
                 // show alert
             }
@@ -138,7 +138,11 @@ extension MovieListsTableViewController {
         let lastElement = popularListArray.count - 1
         if indexPath.row == lastElement {
             let nextPage = nowPage + 1
-            guard nextPage <= 500 else { return }
+            if let totalPage = totalPage {
+                
+                print("totalPage = \(totalPage)")
+                guard nextPage <= totalPage else { return }
+            }
             print("nextPage = \(nextPage)")
             getMoviePopularList(page: nextPage)
             nowPage = nextPage
