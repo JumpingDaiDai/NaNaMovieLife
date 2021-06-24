@@ -15,14 +15,9 @@ class UpcomingMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieIntroduction: UILabel!
     
     var moreAction: (()->Void)?
-    var favoriteAction: (()->Void)?
+    
     @IBAction func moreButtonIsClick(_ sender: UIButton) {
         moreAction?()
-    }
-    @IBAction func favoriteBottonIsClick(_ sender: UIButton) {
-        
-        sender.isSelected = !sender.isSelected
-        favoriteAction?()
     }
     
     override func awakeFromNib() {

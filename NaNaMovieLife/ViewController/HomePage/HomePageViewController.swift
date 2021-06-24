@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomePageViewController: UIViewController {
+class HomePageViewController: BaseViewController {
 
     var favoriteInfo = MovieManager.favoriteMovies
     @IBAction func goMovieListVC(_ sender: UIButton) {

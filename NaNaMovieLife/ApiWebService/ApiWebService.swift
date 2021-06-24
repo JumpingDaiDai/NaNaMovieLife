@@ -12,6 +12,7 @@ class ApiWebService {
     static var kBaseUrl = "https://api.themoviedb.org/3"
     static var kPopularListUrl = kBaseUrl + "/movie/popular"
     static var kTopRatedUrl = kBaseUrl + "/movie/top_rated"
+    static var kUpcomingUrl = kBaseUrl + "/movie/upcoming"
     
     static var kImageBaseUrl = "https://image.tmdb.org/t/p/w500"
     

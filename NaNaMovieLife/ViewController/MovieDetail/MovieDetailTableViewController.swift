@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieDetailTableViewController: UITableViewController {
+class MovieDetailTableViewController: BaseTableViewController {
     
     var id: Int?
     var movieDetail: MovieDetail? {

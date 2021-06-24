@@ -638,11 +638,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yZs-za-dgb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yZs-za-dgb">
                                 <rect key="frame" x="0.0" y="204" width="414" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="200" id="AAh-fk-GO2" customClass="UpcomingMovieTableViewCell" customModule="NaNaMovieLife" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="AAh-fk-GO2" customClass="UpcomingMovieTableViewCell" customModule="NaNaMovieLife" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AAh-fk-GO2" id="7Fa-ff-N4a">
@@ -692,7 +692,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFQ-sR-Kfm">
-                                                    <rect key="frame" x="328" y="160" width="36" height="30"/>
+                                                    <rect key="frame" x="368" y="160" width="36" height="30"/>
                                                     <state key="normal" title="more">
                                                         <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
@@ -700,32 +700,12 @@
                                                         <action selector="moreButtonIsClick:" destination="AAh-fk-GO2" eventType="touchUpInside" id="j2e-Rs-GId"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USY-Uk-ObL">
-                                                    <rect key="frame" x="364" y="161.5" width="40" height="27.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Zd0-Tr-MkX"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="bvb-qw-DK9"/>
-                                                        <constraint firstAttribute="width" constant="40" id="cS8-no-Rqa"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="vPk-Cw-kuJ"/>
-                                                    </constraints>
-                                                    <color key="tintColor" systemColor="systemRedColor"/>
-                                                    <state key="normal">
-                                                        <color key="titleColor" systemColor="labelColor"/>
-                                                        <imageReference key="backgroundImage" image="heart" catalog="system" symbolScale="default"/>
-                                                    </state>
-                                                    <state key="selected" backgroundImage="suit.heart.fill" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="favoriteBottonIsClick:" destination="AAh-fk-GO2" eventType="touchUpInside" id="lIp-FC-BEm"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="dHS-1t-yzx" secondAttribute="trailing" constant="10" id="56r-JO-LUW"/>
                                                 <constraint firstItem="Yfa-YR-7Fg" firstAttribute="leading" secondItem="OIc-Nd-dA5" secondAttribute="trailing" constant="10" id="8r2-wf-DVA"/>
-                                                <constraint firstAttribute="bottom" secondItem="USY-Uk-ObL" secondAttribute="bottom" constant="10" id="9VC-xw-3Pc"/>
                                                 <constraint firstItem="S1w-wl-Mtm" firstAttribute="top" secondItem="Yfa-YR-7Fg" secondAttribute="bottom" constant="10" id="9t5-Ao-Bfy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="S1w-wl-Mtm" secondAttribute="trailing" constant="10" id="AJm-mc-xOp"/>
-                                                <constraint firstAttribute="trailing" secondItem="USY-Uk-ObL" secondAttribute="trailing" constant="10" id="Hci-cb-keO"/>
                                                 <constraint firstItem="S1w-wl-Mtm" firstAttribute="leading" secondItem="OIc-Nd-dA5" secondAttribute="trailing" constant="10" id="HuR-Th-pfV"/>
                                                 <constraint firstItem="OIc-Nd-dA5" firstAttribute="top" secondItem="7Fa-ff-N4a" secondAttribute="top" constant="10" id="J0Y-Mi-BVt"/>
                                                 <constraint firstItem="dHS-1t-yzx" firstAttribute="leading" secondItem="OIc-Nd-dA5" secondAttribute="trailing" constant="10" id="UcC-0e-TPv"/>
@@ -736,7 +716,7 @@
                                                 <constraint firstItem="OIc-Nd-dA5" firstAttribute="width" secondItem="7Fa-ff-N4a" secondAttribute="width" multiplier="0.33" id="nok-2f-JQ0"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="S1w-wl-Mtm" secondAttribute="bottom" constant="30" id="nsN-mg-eBa"/>
                                                 <constraint firstItem="Yfa-YR-7Fg" firstAttribute="top" secondItem="dHS-1t-yzx" secondAttribute="bottom" constant="10" id="p3W-zc-0bv"/>
-                                                <constraint firstItem="USY-Uk-ObL" firstAttribute="leading" secondItem="eFQ-sR-Kfm" secondAttribute="trailing" id="sCS-EW-api"/>
+                                                <constraint firstAttribute="trailing" secondItem="eFQ-sR-Kfm" secondAttribute="trailing" constant="10" id="wCf-Ui-Euz"/>
                                                 <constraint firstAttribute="bottom" secondItem="eFQ-sR-Kfm" secondAttribute="bottom" constant="10" id="yRT-TQ-p1A"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -803,6 +783,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="即將上映" id="7gJ-j2-tLE"/>
                     <connections>
+                        <outlet property="showCountryLabel" destination="pjT-ca-GIC" id="ChT-aD-9uS"/>
                         <outlet property="tableView" destination="yZs-za-dgb" id="Th2-yI-eOA"/>
                     </connections>
                 </viewController>

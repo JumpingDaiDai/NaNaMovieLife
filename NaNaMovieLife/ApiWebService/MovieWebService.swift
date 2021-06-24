@@ -147,8 +147,52 @@ extension ApiWebService {
     }
     
     //MARK: 取得即將上映電影列表
-    func fetchUpcomingMovieList() {
+    func fetchUpcomingMovieList(page: Int, region: String, completionHandler: @escaping ([UpcomingListInfoResponse]?, _ totalPage: Int?, Error?) -> Void) {
         
+        let urlStr = "\(ApiWebService.kUpcomingUrl)?api_key=\(ApiWebService.kApiKey)&language=zh-TW&page=\(page)&region=\(region)"
+        guard let url = URL(string: urlStr) else { return }
+        print("\(url)")
         
+        //呼叫api
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            DispatchQueue.main.async {
+                
+                //heep error
+                if error != nil {
+                    completionHandler(nil, nil, error)
+                }
+                //有打到server
+                else {
+                    //解碼
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    if let data = data {
+                        
+                        //印出api response
+                        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                            print("Api url = \(urlStr) \n \(json)")
+                        }
+                        do {
+                            let upcomingListData = try decoder.decode(UpcomingMovieList.self, from: data)
+                            let upcomingListArray: [UpcomingListInfoResponse] = upcomingListData.results
+                            let totalPage = upcomingListData.total_pages
+                            // 執行 完成後要處理的closure，並塞入參數
+                            completionHandler(upcomingListArray, totalPage, nil)
+                            
+                        }
+                        // JSON decode 失敗
+                        catch {
+                            print("JSON decode 失敗: \(error)")
+                            completionHandler(nil, nil, error)
+                        }
+                    }
+                    // api 回傳 data 是空的
+                    else {
+                        completionHandler(nil, nil, error)
+                    }
+                }
+            }
+        }.resume()
     }
 }

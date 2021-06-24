@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class FavoritesPageTableViewController: UITableViewController {
+class FavoritesPageTableViewController: BaseTableViewController {
 
 //    var dataArray: [FavoritesList] = MovieManager.likeMovies
     var favoriteList = MovieManager.favoriteMovies

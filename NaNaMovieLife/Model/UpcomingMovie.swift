@@ -22,12 +22,3 @@ struct UpcomingListInfoResponse: Codable {
     var title: String
 }
 
-struct UpcomingListInfo: Codable {
-    
-    var poster_path: String?
-    var overview: String
-    var release_date: String
-    var id: Int
-    var title: String
-    var isFavorite: Bool = false
-}

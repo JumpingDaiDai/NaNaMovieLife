@@ -24,15 +24,15 @@ import SVProgressHUD
 
 
 
-class MovieListsTableViewController: UITableViewController {
+class MovieListsTableViewController: BaseTableViewController {
     
     @IBOutlet var tabelView: UITableView!
     var popularListArray = [PopularListInfo]()
     var nowPage = 1
     var totalPage: Int?
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "背景圖"))
         self.tableView.backgroundView?.alpha = 0.5
     }
@@ -135,15 +135,16 @@ extension MovieListsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = popularListArray.count - 1
-        if indexPath.row == lastElement {
+        let lastElementIndex = popularListArray.count - 1
+        if indexPath.row == lastElementIndex {
             let nextPage = nowPage + 1
-            if let totalPage = totalPage {
-                
-                print("totalPage = \(totalPage)")
-                guard nextPage <= totalPage else { return }
-            }
+            
+            guard let totalPage = totalPage else { return }
+            print("totalPage = \(totalPage)")
+            
+            guard nextPage <= totalPage else { return }
             print("nextPage = \(nextPage)")
+            
             getMoviePopularList(page: nextPage)
             nowPage = nextPage
         }

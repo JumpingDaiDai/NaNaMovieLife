@@ -32,6 +32,8 @@
 		B284BC83267C575B00793C3B /* UpcomingMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284BC82267C575B00793C3B /* UpcomingMovieTableViewController.swift */; };
 		B284BC85267C577C00793C3B /* UpcomingMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284BC84267C577C00793C3B /* UpcomingMovieTableViewCell.swift */; };
 		B284BC87267C807B00793C3B /* UpcomingMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284BC86267C807B00793C3B /* UpcomingMovie.swift */; };
+		B2C088712684B72800EB0973 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C088702684B72800EB0973 /* BaseViewController.swift */; };
+		B2C088732684B8B900EB0973 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C088722684B8B900EB0973 /* BaseTableViewController.swift */; };
 		B2C375A12670B8D2007328D1 /* RecommendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C375A02670B8D2007328D1 /* RecommendList.swift */; };
 		B2DF1F75265B99AE001F1B75 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F74265B99AE001F1B75 /* HomePageViewController.swift */; };
 		B2DF1F82265CDC51001F1B75 /* FavoritesPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1F81265CDC51001F1B75 /* FavoritesPageTableViewController.swift */; };
@@ -91,6 +93,8 @@
 		B284BC82267C575B00793C3B /* UpcomingMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieTableViewController.swift; sourceTree = "<group>"; };
 		B284BC84267C577C00793C3B /* UpcomingMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieTableViewCell.swift; sourceTree = "<group>"; };
 		B284BC86267C807B00793C3B /* UpcomingMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovie.swift; sourceTree = "<group>"; };
+		B2C088702684B72800EB0973 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B2C088722684B8B900EB0973 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		B2C375A02670B8D2007328D1 /* RecommendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendList.swift; sourceTree = "<group>"; };
 		B2DF1F71265B5730001F1B75 /* NaNaMovieLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaNaMovieLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF1F72265B5730001F1B75 /* NaNaMovieLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaNaMovieLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				B21DD6B8264D570D00FC81E1 /* Main.storyboard */,
+				B2C088702684B72800EB0973 /* BaseViewController.swift */,
+				B2C088722684B8B900EB0973 /* BaseTableViewController.swift */,
 				B2C0886B2682139200EB0973 /* MovieList */,
 				B2C0886C268213A300EB0973 /* MovieDetail */,
 				B2C0886D268213B700EB0973 /* HomePage */,
@@ -547,6 +553,7 @@
 			files = (
 				B2DF1F8A265E0756001F1B75 /* MovieManager.swift in Sources */,
 				B21DD6E7264E31DA00FC81E1 /* MovieListsTableViewCell.swift in Sources */,
+				B2C088732684B8B900EB0973 /* BaseTableViewController.swift in Sources */,
 				B21DD6E5264D5A9100FC81E1 /* TestDataManager.swift in Sources */,
 				B21DD6FF2656B7E300FC81E1 /* UIImageView+LoadUrl.swift in Sources */,
 				B2DF1F82265CDC51001F1B75 /* FavoritesPageTableViewController.swift in Sources */,
@@ -565,6 +572,7 @@
 				B2DF1F84265CE1A2001F1B75 /* FavoritesPageTableViewCell.swift in Sources */,
 				B241BCA82681932000C3C630 /* CountryPickerViewController.swift in Sources */,
 				B21DD6B3264D570D00FC81E1 /* AppDelegate.swift in Sources */,
+				B2C088712684B72800EB0973 /* BaseViewController.swift in Sources */,
 				B21DD6F02651083300FC81E1 /* ApiWebService.swift in Sources */,
 				B21DD6EB2650FA6500FC81E1 /* PopularList.swift in Sources */,
 				B21DD6B5264D570D00FC81E1 /* SceneDelegate.swift in Sources */,
