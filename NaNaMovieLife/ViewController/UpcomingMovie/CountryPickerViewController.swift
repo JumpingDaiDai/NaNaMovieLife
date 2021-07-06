@@ -14,16 +14,20 @@ protocol CountryPickerViewControllerDelegate: NSObjectProtocol {
 class CountryPickerViewController: BaseViewController {
 
     enum Country {
+        case Taiwan
         case America
         case Japan
         case Britain
         case France
         case India
         case Germany
+        case Indonesia
         
         // use for display
         var displayName: String {
             switch self {
+            case .Taiwan:
+                return "台灣"
             case .America:
                 return "美國"
             case .Japan:
@@ -36,12 +40,16 @@ class CountryPickerViewController: BaseViewController {
                 return "印度"
             case .Germany:
                 return "德國"
+            case .Indonesia:
+                return "印尼"
             }
         }
         
         // use for api
         var region: String {
             switch self {
+            case .Taiwan:
+                return "TW"
             case .America:
                 return "US"
             case .Japan:
@@ -54,19 +62,23 @@ class CountryPickerViewController: BaseViewController {
                 return "IN"
             case .Germany:
                 return "DE"
+            case .Indonesia:
+                return "ID"
             }
         }
     }
     
     weak var delegate: CountryPickerViewControllerDelegate?
-    var selectCountry: Country = Country.America
+    var selectCountry: Country = Country.Taiwan
     var country: [Country] = [
+        .Taiwan,
         .America,
         .Japan,
         .Britain,
         .France,
         .India,
-        .Germany
+        .Germany,
+        .Indonesia
     ]
     
     @IBAction func doneButtonIsClick() {

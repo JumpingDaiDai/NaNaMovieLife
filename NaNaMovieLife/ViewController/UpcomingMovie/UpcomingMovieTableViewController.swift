@@ -10,16 +10,23 @@ import SVProgressHUD
 
 class UpcomingMovieTableViewController: BaseViewController {
 
+    @IBOutlet var viewController: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var showCountryLabel: UILabel!
+    @IBOutlet weak var selectCountryButton: UIButton!
+    @IBOutlet weak var buttonTopToSuperViewConstraint: NSLayoutConstraint!
     var upcomingListInfo: [UpcomingListInfoResponse] = []
     var totalPage: Int?
     var nowCountry: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
+        let vc = CountryPickerViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
-
     
     @IBAction func showPicker(_ sender: UIButton) {
         
@@ -44,9 +51,9 @@ class UpcomingMovieTableViewController: BaseViewController {
             } else {
                 // show alert
             }
-            
         }
     }
+    
 }
 
 extension UpcomingMovieTableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -59,6 +66,17 @@ extension UpcomingMovieTableViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return upcomingListInfo.count
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 200, 0, 0)
+            cell.layer.transform = rotationTransform
+            cell.alpha = 0
+
+        UIView.animate(withDuration: 0.5){
+                cell.layer.transform = CATransform3DIdentity
+                cell.alpha = 1.0
+            }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
@@ -103,6 +121,8 @@ extension UpcomingMovieTableViewController: CountryPickerViewControllerDelegate 
         fetchUpcomingData(page: 1, region: country.region)
         
         print("didSelectCountry = \(country)")
+
     }
    
 }
+

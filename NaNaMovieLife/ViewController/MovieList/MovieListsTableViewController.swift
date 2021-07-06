@@ -41,6 +41,7 @@ class MovieListsTableViewController: BaseTableViewController {
         super.viewWillAppear(animated)
         
         getMoviePopularList(page: 1)
+        
     }
     
     // MARK: Private methods
@@ -148,6 +149,14 @@ extension MovieListsTableViewController {
             getMoviePopularList(page: nextPage)
             nowPage = nextPage
         }
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 300, 0)
+            cell.layer.transform = rotationTransform
+            cell.alpha = 0
+
+        UIView.animate(withDuration: 0.7){
+                cell.layer.transform = CATransform3DIdentity
+                cell.alpha = 1.0
+            }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath : IndexPath) -> UITableViewCell {
@@ -216,4 +225,5 @@ extension MovieListsTableViewController {
         return cell
     }
 }
+
 

@@ -72,7 +72,11 @@ class MovieDetailTableViewController: BaseTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        if recommendListInfo.count == 0 {
+            return 1
+        } else {
+            return 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
