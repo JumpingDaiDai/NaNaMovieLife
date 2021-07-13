@@ -24,7 +24,7 @@ class MovieManager: NSObject {
             print("array = \(array)")
             UserDefaults.standard.setValue(array, forKey: kFavorite)
             
-            print("bundle path: \(NSHomeDirectory())")
+//            print("bundle path: \(NSHomeDirectory())")
         }
     }
     

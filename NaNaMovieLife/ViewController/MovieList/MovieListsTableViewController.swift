@@ -40,6 +40,7 @@ class MovieListsTableViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.popularListArray = []
         getMoviePopularList(page: 1)
         
     }
@@ -99,6 +100,7 @@ class MovieListsTableViewController: BaseTableViewController {
     /// 更新我的最愛狀態
     private func updateIsFavorite() {
         
+        print("[Dai]MovieManager.favoriteMovies = \(MovieManager.favoriteMovies)")
         for (index, popularMovie) in popularListArray.enumerated() {
             if MovieManager.favoriteMovies.contains(popularMovie) {
                 popularListArray[index].isFavorite = true
@@ -149,11 +151,11 @@ extension MovieListsTableViewController {
             getMoviePopularList(page: nextPage)
             nowPage = nextPage
         }
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 300, 0)
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 200, 0, 0)
             cell.layer.transform = rotationTransform
             cell.alpha = 0
 
-        UIView.animate(withDuration: 0.7){
+        UIView.animate(withDuration: 0.5){
                 cell.layer.transform = CATransform3DIdentity
                 cell.alpha = 1.0
             }
@@ -164,7 +166,7 @@ extension MovieListsTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieListsTableViewCell
         
         
-        var movie: PopularListInfo = popularListArray[indexPath.row]
+        let movie: PopularListInfo = popularListArray[indexPath.row]
         // way 1 基本 設定 => 沒有耦合，在controller上的程式碼很長
         cell.movieTitleLabel.text = movie.title
         cell.movieIntroductionLabel.text = movie.overview
@@ -189,19 +191,20 @@ extension MovieListsTableViewController {
             NavigationManager.goDetailVC(id: movie.id, nav: self.navigationController)
             
         }
-        cell.favoritesAction = {
+        cell.favoritesAction = { [weak self] in
+            guard let self = self else { return }
             
             if movie.isFavorite { // 是我的最愛
                 // 從我的最愛移除
                 if let index = MovieManager.favoriteMovies.firstIndex(of: movie) {
                     
-                    movie.isFavorite = false
+                    self.popularListArray[indexPath.row].isFavorite = false
                     MovieManager.favoriteMovies.remove(at: index)
                 }
             } else { // 不是我的最愛
                 // 加入我的最愛
-                movie.isFavorite = true
-                MovieManager.favoriteMovies.append(movie)
+                self.popularListArray[indexPath.row].isFavorite = true
+                MovieManager.favoriteMovies.append(self.popularListArray[indexPath.row])
             }
             print("[NaNa]\(MovieManager.favoriteMovies)")
             MovieManager.saveFavoriteMoviesToUserDefault()

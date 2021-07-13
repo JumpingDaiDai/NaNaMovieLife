@@ -32,11 +32,11 @@ class FavoritesPageTableViewController: BaseTableViewController {
     }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 300, 0)
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 200, 0, 0)
             cell.layer.transform = rotationTransform
             cell.alpha = 0
 
-        UIView.animate(withDuration: 0.7){
+        UIView.animate(withDuration: 0.5){
                 cell.layer.transform = CATransform3DIdentity
                 cell.alpha = 1.0
             }
@@ -48,34 +48,40 @@ class FavoritesPageTableViewController: BaseTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? FavoritesPageTableViewCell else {
             return UITableViewCell()
         }
-        var favoriteList = favoriteList[indexPath.row]
+        let favoriteMovie = favoriteList[indexPath.row]
         // set info for cell
-        cell.movieTitle.text = favoriteList.title
-        cell.movieInduction.text = favoriteList.overview
-        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + favoriteList.posterPath) {
+        cell.movieTitle.text = favoriteMovie.title
+        cell.movieInduction.text = favoriteMovie.overview
+        if let imageurl = URL(string: ApiWebService.kImageBaseUrl + favoriteMovie.posterPath) {
             cell.movieImage.sd_setImage(with: imageurl, completed: nil)
         }
-        cell.favoriteButton.isSelected = favoriteList.isFavorite
+        cell.favoriteButton.isSelected = favoriteMovie.isFavorite
         cell.moreAction = {
             
             print("moreAction: \(indexPath.row)")
             // 跳電影明細頁面
-            NavigationManager.goDetailVC(id: favoriteList.id, nav: self.navigationController)
+            NavigationManager.goDetailVC(id: favoriteMovie.id, nav: self.navigationController)
         }
-        cell.favoritesAction = {
+        cell.favoritesAction = { [weak self] in
+            guard let self = self else { return }
             
-            if favoriteList.isFavorite { // 是我的最愛
+            if self.favoriteList[indexPath.row].isFavorite { // 是我的最愛
+//                print("是我的最愛 => 要移除")
                 // 從我的最愛移除
-                if let index = MovieManager.favoriteMovies.firstIndex(of: favoriteList) {
-                    favoriteList.isFavorite = false
+                if let index = MovieManager.favoriteMovies.firstIndex(of: favoriteMovie) {
+                    self.favoriteList[indexPath.row].isFavorite = false
                     MovieManager.favoriteMovies.remove(at: index)
+//                    print("isFavorite = \(self.favoriteList[indexPath.row].isFavorite)")
                 }
             } else { // 不是我的最愛
+//                print("不是我的最愛 => 要加入")
                 // 加入我的最愛
-                favoriteList.isFavorite = true
-                MovieManager.favoriteMovies.append(favoriteList)
+                self.favoriteList[indexPath.row].isFavorite = true
+                MovieManager.favoriteMovies.append(self.favoriteList[indexPath.row])
+//                print("isFavorite = \(self.favoriteList[indexPath.row].isFavorite)")
             }
-            print("[favorite]\(MovieManager.favoriteMovies)")
+//            print("[favorite]\(MovieManager.favoriteMovies)")
+            print("[favorite]\(MovieManager.favoriteMovies.count)")
             MovieManager.saveFavoriteMoviesToUserDefault()
         }
         
